@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DsArticulos3" targetNamespace="http://tempuri.org/DsArticulos.xsd" xmlns:mstns="http://tempuri.org/DsArticulos.xsd" xmlns="http://tempuri.org/DsArticulos.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DsArticulos3" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DsArticulos3" msprop:Generator_UserDSName="DsArticulos3">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DtArticulos3" msprop:Generator_TableClassName="DtArticulos3DataTable" msprop:Generator_TableVarName="tableDtArticulos3" msprop:Generator_RowChangedName="DtArticulos3RowChanged" msprop:Generator_TablePropName="DtArticulos3" msprop:Generator_RowDeletingName="DtArticulos3RowDeleting" msprop:Generator_RowChangingName="DtArticulos3RowChanging" msprop:Generator_RowEvHandlerName="DtArticulos3RowChangeEventHandler" msprop:Generator_RowDeletedName="DtArticulos3RowDeleted" msprop:Generator_RowClassName="DtArticulos3Row" msprop:Generator_UserTableName="DtArticulos3" msprop:Generator_RowEvArgName="DtArticulos3RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="numero_Columna" msprop:Generator_ColumnVarNameInTable="columnnumero_Columna" msprop:Generator_ColumnPropNameInRow="numero_Columna" msprop:Generator_ColumnPropNameInTable="numero_ColumnaColumn" msprop:Generator_UserColumnName="numero_Columna" type="xs:string" minOccurs="0" />
+              <xs:element name="numero_Fila" msprop:Generator_ColumnVarNameInTable="columnnumero_Fila" msprop:Generator_ColumnPropNameInRow="numero_Fila" msprop:Generator_ColumnPropNameInTable="numero_FilaColumn" msprop:Generator_UserColumnName="numero_Fila" type="xs:string" minOccurs="0" />
+              <xs:element name="Objetos" msprop:Generator_ColumnVarNameInTable="columnObjetos" msprop:Generator_ColumnPropNameInRow="Objetos" msprop:Generator_ColumnPropNameInTable="ObjetosColumn" msprop:Generator_UserColumnName="Objetos" type="xs:string" minOccurs="0" />
+              <xs:element name="Disponible" msprop:Generator_ColumnVarNameInTable="columnDisponible" msprop:Generator_ColumnPropNameInRow="Disponible" msprop:Generator_ColumnPropNameInTable="DisponibleColumn" msprop:Generator_UserColumnName="Disponible" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
