@@ -56,3 +56,7 @@ C:\Users\basti_000\Desktop\Dropbox\Taller Integral de Proyecto\APP 10-12-2015\Cu
 C:\Users\basti_000\Desktop\Dropbox\Taller Integral de Proyecto\APP 10-12-2015\Cubicacion\Cubicacion\obj\x86\Debug\Cubicacion.Resources.resources
 C:\Users\basti_000\Desktop\Dropbox\Taller Integral de Proyecto\APP 10-12-2015\Cubicacion\Cubicacion\obj\x86\Debug\Cubicacion.vbproj.GenerateResource.Cache
 C:\Users\basti_000\Desktop\Dropbox\Taller Integral de Proyecto\APP 10-12-2015\Cubicacion\Cubicacion\obj\x86\Debug\Cubicacion.frmUsuarios.resources
+C:\Users\basti_000\Desktop\Cubicacion\Cubicacion\bin\Debug\Cubicacion.exe.config
+C:\Users\basti_000\Desktop\Cubicacion\Cubicacion\obj\x86\Debug\Cubicacion.exe
+C:\Users\basti_000\Desktop\Cubicacion\Cubicacion\obj\x86\Debug\Cubicacion.xml
+C:\Users\basti_000\Desktop\Cubicacion\Cubicacion\obj\x86\Debug\Cubicacion.pdb

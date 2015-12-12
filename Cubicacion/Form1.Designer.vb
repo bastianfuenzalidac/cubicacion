@@ -43,6 +43,7 @@ Partial Class Form1
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.ProveedoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -50,7 +51,7 @@ Partial Class Form1
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AdministraciónToolStripMenuItem, Me.VerToolStripMenuItem, Me.IngresoToolStripMenuItem, Me.DespachoToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AdministraciónToolStripMenuItem, Me.VerToolStripMenuItem, Me.IngresoToolStripMenuItem, Me.DespachoToolStripMenuItem, Me.ProveedoresToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(1007, 24)
@@ -67,7 +68,7 @@ Partial Class Form1
         'CubiculosToolStripMenuItem
         '
         Me.CubiculosToolStripMenuItem.Name = "CubiculosToolStripMenuItem"
-        Me.CubiculosToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
+        Me.CubiculosToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.CubiculosToolStripMenuItem.Text = "Cubiculos"
         '
         'UsuariosToolStripMenuItem
@@ -219,6 +220,12 @@ Partial Class Form1
         Me.Label2.Text = "Cola Objetos Piso"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
+        'ProveedoresToolStripMenuItem
+        '
+        Me.ProveedoresToolStripMenuItem.Name = "ProveedoresToolStripMenuItem"
+        Me.ProveedoresToolStripMenuItem.Size = New System.Drawing.Size(84, 20)
+        Me.ProveedoresToolStripMenuItem.Text = "Proveedores"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -260,4 +267,5 @@ Partial Class Form1
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents ProveedoresToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

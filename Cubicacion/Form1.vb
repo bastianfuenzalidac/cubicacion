@@ -92,4 +92,8 @@ Public Class Form1
         frmUsuarios.MdiParent = Me
         frmUsuarios.Show()
     End Sub
+
+    Private Sub ProveedoresToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ProveedoresToolStripMenuItem.Click
+
+    End Sub
 End Class
