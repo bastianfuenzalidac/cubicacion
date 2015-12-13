@@ -40,8 +40,9 @@ Public Class frmQR
 
             If DataGridView1.Rows.Count = 0 Then
                 lblEstado.Text = ("No Existen Ubicaciones Disponibles" + Chr(13) + "Lugar temporal:" + Chr(13) + "Piso Bodega")
-                Button2.Enabled = False
-
+                ' Button2.Enabled = False
+                lblCol.Text = "PISO"
+                lblFil.Text = 0
             Else
                 idCapacidad = DataGridView1.Rows(DataGridView1.CurrentRow.Index).Cells(0).Value
                 Columna = DataGridView1.Rows(DataGridView1.CurrentRow.Index).Cells(1).Value
@@ -162,7 +163,7 @@ Public Class frmQR
          
 
             'Creacion de capacidad
-            If txtAncho.Text <> "" Then
+            If lblCol.Text <> "PISO" Then
 
                 Dim cmd As New SqlCommand("sp_CrearObjeto", cnn)
 
@@ -176,6 +177,8 @@ Public Class frmQR
                 cmd.Parameters.AddWithValue("@ancho", txtAncho.Text)
                 cmd.Parameters.AddWithValue("@largo", txtLargo.Text)
                 cmd.Parameters.AddWithValue("@alto", txtAlto.Text)
+                cmd.Parameters.AddWithValue("@peso", txtPeso.Text)
+                cmd.Parameters.AddWithValue("@temperatura", txtTemperatura.Text)
                 'cmd.Parameters.AddWithValue("@id_EmpleadoModificacion", clsLogin.IdUsuario)
                 cmd.Parameters.AddWithValue("@nombre_Objeto", "PRUEBAS DE INGRESO")
                 cmd.Parameters.AddWithValue("@descripcion", "")
@@ -228,11 +231,11 @@ Public Class frmQR
                 cmd3.Parameters.AddWithValue("@cliente", 1)
                 cmd3.Parameters.AddWithValue("@id_Objeto", idObjeto)
                 cmd3.Parameters.AddWithValue("@fecha_salida", Date.Now)
-               
+                cmd3.Parameters.AddWithValue("@estado", 1)
 
                 cmd3.ExecuteNonQuery()
 
-               
+
                 Dim cmd4 As New SqlCommand("sp_CrearBitacora", cnn)
 
                 cmd4.CommandType = CommandType.StoredProcedure
@@ -245,7 +248,68 @@ Public Class frmQR
                 cmd4.ExecuteNonQuery()
 
                 cnn.Close()
-         
+
+            Else
+                Dim cmd As New SqlCommand("sp_CrearObjeto", cnn)
+
+                cmd.CommandType = CommandType.StoredProcedure
+
+                cmd.Parameters.AddWithValue("@fecha_Ingreso", DateTime.Now)
+                cmd.Parameters.AddWithValue("@id_EmpleadoIngreso", clsLogin.IdUsuario)
+                cmd.Parameters.AddWithValue("@fecha_Modificacion", DateTime.Now)
+                cmd.Parameters.AddWithValue("@n_Orden", txtOrden.Text)
+                cmd.Parameters.AddWithValue("@id_Proveedor", idProveedor)
+                cmd.Parameters.AddWithValue("@ancho", txtAncho.Text)
+                cmd.Parameters.AddWithValue("@largo", txtLargo.Text)
+                cmd.Parameters.AddWithValue("@alto", txtAlto.Text)
+                cmd.Parameters.AddWithValue("@peso", txtPeso.Text)
+                cmd.Parameters.AddWithValue("@temperatura", txtTemperatura.Text)
+                'cmd.Parameters.AddWithValue("@id_EmpleadoModificacion", clsLogin.IdUsuario)
+                cmd.Parameters.AddWithValue("@nombre_Objeto", "PRUEBAS DE INGRESO")
+                cmd.Parameters.AddWithValue("@descripcion", "")
+                cmd.Parameters.AddWithValue("@cantidad", txtCant.Text)
+                cmd.Parameters.AddWithValue("@id_cubiculo", "34")
+                cmd.Parameters.AddWithValue("@id_qr", "1")
+
+                cmd.ExecuteNonQuery()
+                MsgBox("Ingresado", MsgBoxStyle.Information, "Exito al Guardar")
+
+                Dim Sql3 As String = "Select top 1 isnull (id_Objeto,0 ) from tbl_Objeto order by id_Objeto desc"
+
+                Dim command3 As New SqlCommand(Sql3, cnn)
+
+                Dim reader3 As SqlDataReader = command3.ExecuteReader()
+                reader3.Read()
+                idObjeto = (reader3.GetValue(0))
+                reader3.Close()
+                MsgBox(idObjeto)
+
+                Dim cmd3 As New SqlCommand("sp_CrearDespacho", cnn)
+
+                cmd3.CommandType = CommandType.StoredProcedure
+
+                cmd3.Parameters.AddWithValue("@id_EmpleadoIngreso", 1)
+                cmd3.Parameters.AddWithValue("@descripcion", "Prueba Despacho")
+                cmd3.Parameters.AddWithValue("@cliente", 1)
+                cmd3.Parameters.AddWithValue("@id_Objeto", idObjeto)
+                cmd3.Parameters.AddWithValue("@fecha_salida", Date.Now)
+                cmd3.Parameters.AddWithValue("@estado", 1)
+
+                cmd3.ExecuteNonQuery()
+
+                Dim cmd4 As New SqlCommand("sp_CrearBitacora", cnn)
+
+                cmd4.CommandType = CommandType.StoredProcedure
+
+                cmd4.Parameters.AddWithValue("@fecha_Ingreso", Date.Now)
+                cmd4.Parameters.AddWithValue("@id_EmpleadoIngreso", clsLogin.IdUsuario)
+                cmd4.Parameters.AddWithValue("@Detalle", "PROVEEDOR: " & txtProveedor.Text & ", NUMERO DE ORDEN: " & txtOrden.Text & Chr(13) _
+                                             & "OBJETO A PISO")
+                cmd4.Parameters.AddWithValue("@Tipo", 4)
+                cmd4.ExecuteNonQuery()
+
+                cnn.Close()
+
             End If
 
         Catch ex As Exception

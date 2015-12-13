@@ -45,6 +45,7 @@ Partial Class frmVisualizarCubiculos
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -282,11 +283,21 @@ Partial Class frmVisualizarCubiculos
         Me.Label14.TabIndex = 26
         Me.Label14.Text = "Letra Columna"
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(249, 6)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(90, 23)
+        Me.Button1.TabIndex = 27
+        Me.Button1.Text = "Objetos en Piso"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'frmVisualizarCubiculos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(990, 422)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label14)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.Label12)
@@ -338,4 +349,5 @@ Partial Class frmVisualizarCubiculos
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 End Class

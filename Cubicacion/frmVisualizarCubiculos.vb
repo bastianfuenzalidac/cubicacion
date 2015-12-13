@@ -3,7 +3,7 @@ Imports System.Text.RegularExpressions
 Imports System.Configuration
 Public Class frmVisualizarCubiculos
     Dim estadoCubiculo As String
-    Dim idColumna, idFila As Integer
+    Dim idColumna, idFila, estadoPiso As Integer
     Protected configuracion As ConnectionStringSettings = ConfigurationManager.ConnectionStrings("cnn")
     Dim cnn As New SqlConnection(configuracion.ConnectionString)
 
@@ -100,7 +100,7 @@ Public Class frmVisualizarCubiculos
         Dim variable As SqlDataReader
         Dim sql As New SqlCommand
         sql.CommandType = CommandType.Text
-        sql.CommandText = ("select left(numero_Columna,1) from tbl_Columna group by left(numero_Columna,1)")
+        sql.CommandText = ("select left(numero_Columna,1) from tbl_Columna where numero_columna <> 'P1' group by left(numero_Columna,1)")
         sql.Connection = (cnn)
         cnn.Open()
         variable = sql.ExecuteReader()
@@ -233,72 +233,95 @@ Public Class frmVisualizarCubiculos
     End Sub
 
     Private Sub DataGridView1_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataGridView1.CellFormatting
-        For i As Integer = 0 To DataGridView1.RowCount - 1
-            For j As Integer = 1 To DataGridView1.ColumnCount - 1
-                'MsgBox(DataGridView1.Rows(i).Cells(j).Value.ToString)
-                If DataGridView1.Rows(i).Cells(j).Value.ToString >= "30" And e.RowIndex = i And e.ColumnIndex = j Then
-                    e.CellStyle.BackColor = Color.Yellow
-                    e.CellStyle.ForeColor = Color.Black
 
-                ElseIf DataGridView1.Rows(i).Cells(j).Value.ToString() = "100" AndAlso e.RowIndex = i AndAlso e.ColumnIndex = j Then
-                    e.CellStyle.BackColor = Color.Lime
-                    e.CellStyle.ForeColor = Color.Black
-                ElseIf DataGridView1.Rows(i).Cells(j).Value.ToString() < "30" And DataGridView1.Rows(i).Cells(j).Value.ToString() > "0" AndAlso e.RowIndex = i AndAlso e.ColumnIndex = j Then
-                    e.CellStyle.BackColor = Color.Tomato
-                    e.CellStyle.ForeColor = Color.Black
-                ElseIf DataGridView1.Rows(i).Cells(j).Value.ToString() = "0" AndAlso e.RowIndex = i AndAlso e.ColumnIndex = j Then
-                    e.CellStyle.BackColor = Color.Red
-                    e.CellStyle.ForeColor = Color.Black
-                    'ElseIf DataGridView1.Rows(i).Cells(j).Value.ToString() = "3" AndAlso e.RowIndex = i AndAlso e.ColumnIndex = j Then
-                    '    e.CellStyle.BackColor = Color.Blue
-                    '    e.CellStyle.ForeColor = Color.Blue
-                    'ElseIf DataGridView1.Rows(i).Cells(j).Value.ToString() = "4" AndAlso e.RowIndex = i AndAlso e.ColumnIndex = j Then
-                    '    e.CellStyle.BackColor = Color.Yellow
-                    '    e.CellStyle.ForeColor = Color.Yellow
-                    'ElseIf DataGridView1.Rows(i).Cells(j).Value.ToString() = "5" AndAlso e.RowIndex = i AndAlso e.ColumnIndex = j Then
-                    '    e.CellStyle.BackColor = Color.Aqua
-                    '    e.CellStyle.ForeColor = Color.Aqua
-                End If
+        If estadoPiso <> "1" Then
+
+            For i As Integer = 0 To DataGridView1.RowCount - 1
+                For j As Integer = 1 To DataGridView1.ColumnCount - 1
+                    'MsgBox(DataGridView1.Rows(i).Cells(j).Value.ToString)
+                    If DataGridView1.Rows(i).Cells(j).Value.ToString >= "30" And e.RowIndex = i And e.ColumnIndex = j Then
+                        e.CellStyle.BackColor = Color.Yellow
+                        e.CellStyle.ForeColor = Color.Black
+
+                    ElseIf DataGridView1.Rows(i).Cells(j).Value.ToString() = "100" AndAlso e.RowIndex = i AndAlso e.ColumnIndex = j Then
+                        e.CellStyle.BackColor = Color.Lime
+                        e.CellStyle.ForeColor = Color.Black
+                    ElseIf DataGridView1.Rows(i).Cells(j).Value.ToString() < "30" And DataGridView1.Rows(i).Cells(j).Value.ToString() > "0" AndAlso e.RowIndex = i AndAlso e.ColumnIndex = j Then
+                        e.CellStyle.BackColor = Color.Tomato
+                        e.CellStyle.ForeColor = Color.Black
+                    ElseIf DataGridView1.Rows(i).Cells(j).Value.ToString() = "0" AndAlso e.RowIndex = i AndAlso e.ColumnIndex = j Then
+                        e.CellStyle.BackColor = Color.Red
+                        e.CellStyle.ForeColor = Color.Black
+                        'ElseIf DataGridView1.Rows(i).Cells(j).Value.ToString() = "3" AndAlso e.RowIndex = i AndAlso e.ColumnIndex = j Then
+                        '    e.CellStyle.BackColor = Color.Blue
+                        '    e.CellStyle.ForeColor = Color.Blue
+                        'ElseIf DataGridView1.Rows(i).Cells(j).Value.ToString() = "4" AndAlso e.RowIndex = i AndAlso e.ColumnIndex = j Then
+                        '    e.CellStyle.BackColor = Color.Yellow
+                        '    e.CellStyle.ForeColor = Color.Yellow
+                        'ElseIf DataGridView1.Rows(i).Cells(j).Value.ToString() = "5" AndAlso e.RowIndex = i AndAlso e.ColumnIndex = j Then
+                        '    e.CellStyle.BackColor = Color.Aqua
+                        '    e.CellStyle.ForeColor = Color.Aqua
+                    End If
+
+                Next
 
             Next
 
-        Next
+            DataGridView1.Columns(0).Width = 25
+            DataGridView1.RowsDefaultCellStyle.BackColor = Color.White
+            DataGridView1.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue
+        Else
 
-        DataGridView1.Columns(0).Width = 25
+            With DataGridView1
+                ' alternar colores  
+                .RowsDefaultCellStyle.BackColor = Color.GreenYellow
+
+                .AlternatingRowsDefaultCellStyle.BackColor = Color.White
+                .ForeColor = Color.Black
+                .DefaultCellStyle.SelectionForeColor = Color.Black
+                .DefaultCellStyle.SelectionBackColor = Color.LightSteelBlue
+                .ClearSelection()
+            End With
+        End If
         'DataGridView1.ClearSelection()
     End Sub
 
     Private Sub cbNColumna_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cbNColumna.SelectedIndexChanged
+        estadoPiso = "0"
         cargardataCubiculo()
     End Sub
 
     Private Sub DataGridView1_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-        Dim fila = DataGridView1.CurrentRow.Index
-        ' MessageBox.Show(DataGridView1.Columns(e.ColumnIndex).Name & ", " & DataGridView1.Item(0, fila).Value)
-
         Try
+            If estadoPiso <> "1" Then
+                Dim fila = DataGridView1.CurrentRow.Index
+                ' MessageBox.Show(DataGridView1.Columns(e.ColumnIndex).Name & ", " & DataGridView1.Item(0, fila).Value)
 
-            Dim command As SqlCommand
-            Dim adapter As SqlDataAdapter
-            Dim dtTable As DataTable
-            cnn.Open()
-            'Indico el SP que voy a utilizar
-            command = New SqlCommand("sp_DetalleCubiculo", cnn)
-            command.CommandType = CommandType.StoredProcedure
-            command.Parameters.AddWithValue("@col", DataGridView1.Columns(e.ColumnIndex).Name)
-            command.Parameters.AddWithValue("@fil", DataGridView1.Item(0, fila).Value)
-            command.ExecuteNonQuery()
 
-            command.CommandType = CommandType.StoredProcedure
-            adapter = New SqlDataAdapter(command)
-            dtTable = New DataTable
 
-            'Aquí ejecuto el SP y lo lleno en el DataTable
-            adapter.Fill(dtTable)
-            'Enlazo mis datos obtenidos en el DataTable con el grid
-            DataGridView2.DataSource = dtTable
-            DataGridView2.Columns(0).HeaderText = ""
-            cnn.Close()
+                Dim command As SqlCommand
+                Dim adapter As SqlDataAdapter
+                Dim dtTable As DataTable
+                cnn.Open()
+                'Indico el SP que voy a utilizar
+                command = New SqlCommand("sp_DetalleCubiculo", cnn)
+                command.CommandType = CommandType.StoredProcedure
+                command.Parameters.AddWithValue("@col", DataGridView1.Columns(e.ColumnIndex).Name)
+                command.Parameters.AddWithValue("@fil", DataGridView1.Item(0, fila).Value)
+                command.ExecuteNonQuery()
+
+                command.CommandType = CommandType.StoredProcedure
+                adapter = New SqlDataAdapter(command)
+                dtTable = New DataTable
+
+                'Aquí ejecuto el SP y lo lleno en el DataTable
+                adapter.Fill(dtTable)
+                'Enlazo mis datos obtenidos en el DataTable con el grid
+                DataGridView2.DataSource = dtTable
+                DataGridView2.Columns(0).HeaderText = ""
+                cnn.Close()
+            Else
+            End If
 
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -308,39 +331,41 @@ Public Class frmVisualizarCubiculos
 
     Private Sub DataGridView1_CellMouseEnter(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellMouseEnter
         Try
+            If estadoPiso <> "1" Then
+                If e.RowIndex > -1 Then
+                    DataGridView1.Rows(e.RowIndex).Cells(e.ColumnIndex).Selected = True
 
-            If e.RowIndex > -1 Then
-                DataGridView1.Rows(e.RowIndex).Cells(e.ColumnIndex).Selected = True
+                    With Me.DataGridView1.Rows(e.RowIndex).Cells(e.ColumnIndex)
+                        Dim command As SqlCommand
 
-                With Me.DataGridView1.Rows(e.RowIndex).Cells(e.ColumnIndex)
-                    Dim command As SqlCommand
+                        cnn.Open()
+                        'Indico el SP que voy a utilizar
+                        command = New SqlCommand("sp_DetalleCubiculoM", cnn)
+                        command.CommandType = CommandType.StoredProcedure
+                        Dim fila = DataGridView1.Rows(e.RowIndex).Index
+                        Label12.Text = ("Columna: " & DataGridView1.Columns(e.ColumnIndex).Name & Chr(13) & "Fila: " & DataGridView1.Item(0, fila).Value)
+                        command.Parameters.AddWithValue("@col", DataGridView1.Columns(e.ColumnIndex).Name)
+                        command.Parameters.AddWithValue("@fil", DataGridView1.Item(0, fila).Value)
+                        command.ExecuteNonQuery()
 
-                    cnn.Open()
-                    'Indico el SP que voy a utilizar
-                    command = New SqlCommand("sp_DetalleCubiculoM", cnn)
-                    command.CommandType = CommandType.StoredProcedure
-                    Dim fila = DataGridView1.Rows(e.RowIndex).Index
-                    Label12.Text = ("Columna: " & DataGridView1.Columns(e.ColumnIndex).Name & Chr(13) & "Fila: " & DataGridView1.Item(0, fila).Value)
-                    command.Parameters.AddWithValue("@col", DataGridView1.Columns(e.ColumnIndex).Name)
-                    command.Parameters.AddWithValue("@fil", DataGridView1.Item(0, fila).Value)
-                    command.ExecuteNonQuery()
-
-                    command.CommandType = CommandType.StoredProcedure
-                    Dim reader As SqlDataReader = command.ExecuteReader()
-
-
-                    If reader.Read() Then
-                        .ToolTipText = "N° Objetos: " + Convert.ToString(reader("numero_Columna")) _
-                        & Chr(13) & "Ancho: " + Convert.ToString(reader("ancho")) _
-                        & Chr(13) & "Largo: " + Convert.ToString(reader("largo")) _
-                        & Chr(13) & "Alto: " + Convert.ToString(reader("alto")) _
-                        & Chr(13) & "Peso Maximo: " + Convert.ToString(reader("peso")) _
-                        & Chr(13) & "Temperatura: " + Convert.ToString(reader("temperatura"))
+                        command.CommandType = CommandType.StoredProcedure
+                        Dim reader As SqlDataReader = command.ExecuteReader()
 
 
-                    End If
-                    cnn.Close()
-                End With
+                        If reader.Read() Then
+                            .ToolTipText = "N° Objetos: " + Convert.ToString(reader("numero_Columna")) _
+                            & Chr(13) & "Ancho: " + Convert.ToString(reader("ancho")) _
+                            & Chr(13) & "Largo: " + Convert.ToString(reader("largo")) _
+                            & Chr(13) & "Alto: " + Convert.ToString(reader("alto")) _
+                            & Chr(13) & "Peso Maximo: " + Convert.ToString(reader("peso")) _
+                            & Chr(13) & "Temperatura: " + Convert.ToString(reader("temperatura"))
+
+
+                        End If
+                        cnn.Close()
+                    End With
+                End If
+            Else
             End If
 
         Catch ex As Exception
@@ -352,5 +377,45 @@ Public Class frmVisualizarCubiculos
         If e.RowIndex > -1 Then
             DataGridView1.Rows(e.RowIndex).Cells(e.ColumnIndex).Selected = False
         End If
+    End Sub
+
+    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
+        Try
+            estadoPiso = 1
+            Dim command As SqlCommand
+            Dim adapter As SqlDataAdapter
+            Dim dtTable As DataTable
+            cnn.Open()
+            'Indico el SP que voy a utilizar
+            command = New SqlCommand("sp_EstadoPiso", cnn)
+            command.CommandType = CommandType.StoredProcedure
+            command.ExecuteNonQuery()
+
+            command.CommandType = CommandType.StoredProcedure
+            adapter = New SqlDataAdapter(command)
+            dtTable = New DataTable
+
+            'Aquí ejecuto el SP y lo lleno en el DataTable
+            adapter.Fill(dtTable)
+            'Enlazo mis datos obtenidos en el DataTable con el grid
+            DataGridView1.DataSource = dtTable
+            'DataGridView1.Columns(0).HeaderText = ""
+
+
+            Dim cmd4 As New SqlCommand("sp_CrearBitacora", cnn)
+
+            cmd4.CommandType = CommandType.StoredProcedure
+
+            cmd4.Parameters.AddWithValue("@fecha_Ingreso", Date.Now)
+            cmd4.Parameters.AddWithValue("@id_EmpleadoIngreso", clsLogin.IdUsuario)
+            cmd4.Parameters.AddWithValue("@Detalle", "VISUALIZA ESTADO PISO BODEGA")
+            cmd4.Parameters.AddWithValue("@Tipo", 10)
+            cmd4.ExecuteNonQuery()
+
+
+            cnn.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 End Class

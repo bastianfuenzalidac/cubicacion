@@ -48,6 +48,48 @@ Public Class Form1
         End Try
     End Sub
 
+    Public Sub cargardataEstadoPiso()
+        Try
+
+            Dim command As SqlCommand
+            Dim adapter As SqlDataAdapter
+            Dim dtTable As DataTable
+            cnn.Open()
+            'Indico el SP que voy a utilizar
+            command = New SqlCommand("sp_EstadoPiso", cnn)
+            command.CommandType = CommandType.StoredProcedure
+            command.ExecuteNonQuery()
+
+            command.CommandType = CommandType.StoredProcedure
+            adapter = New SqlDataAdapter(command)
+            dtTable = New DataTable
+
+            'Aquí ejecuto el SP y lo lleno en el DataTable
+            adapter.Fill(dtTable)
+            'Enlazo mis datos obtenidos en el DataTable con el grid
+            DataGridView2.DataSource = dtTable
+            'DataGridView1.Columns(2).HeaderText = "% Disponible"
+            DataGridView2.Columns(0).Width = 180
+            DataGridView2.Columns(1).Width = 78
+
+
+            With DataGridView2
+                ' alternar colores  
+                .RowsDefaultCellStyle.BackColor = Color.GreenYellow
+
+                .AlternatingRowsDefaultCellStyle.BackColor = Color.White
+                .ForeColor = Color.Black
+                .DefaultCellStyle.SelectionForeColor = Color.Black
+                .DefaultCellStyle.SelectionBackColor = Color.LightSteelBlue
+                .ClearSelection()
+            End With
+
+            cnn.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
     Private Sub EstadoCubiculosToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles EstadoCubiculosToolStripMenuItem.Click
         frmVisualizarCubiculos.MdiParent = Me
         frmVisualizarCubiculos.Show()
@@ -81,6 +123,7 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         cargardataFechaSalida()
+        cargardataEstadoPiso()
     End Sub
 
     Private Sub DespachoToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles DespachoToolStripMenuItem.Click

@@ -38,7 +38,7 @@ Public Class frmAdmCubiculos
         Dim variable As SqlDataReader
         Dim sql As New SqlCommand
         sql.CommandType = CommandType.Text
-        sql.CommandText = ("select numero_Columna from tbl_Columna")
+        sql.CommandText = ("select numero_Columna from tbl_Columna where numero_columna <> 'P1' ORDER BY LEFT(numero_Columna, PATINDEX('%[0-9]%', numero_Columna) - 1), CAST(RIGHT(numero_Columna, LEN(numero_Columna) - PATINDEX('%[0-9]%', numero_Columna) + 1) AS INT)")
         sql.Connection = (cnn)
         cnn.Open()
         variable = sql.ExecuteReader()
@@ -59,7 +59,7 @@ Public Class frmAdmCubiculos
         Dim variable As SqlDataReader
         Dim sql As New SqlCommand
         sql.CommandType = CommandType.Text
-        sql.CommandText = ("select numero_Fila from tbl_Fila")
+        sql.CommandText = ("select numero_Fila from tbl_Fila where numero_fila <> '99999' order by numero_fila asc")
         sql.Connection = (cnn)
         cnn.Open()
         variable = sql.ExecuteReader()
