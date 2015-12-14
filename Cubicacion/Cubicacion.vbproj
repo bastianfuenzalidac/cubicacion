@@ -164,6 +164,12 @@
     <Compile Include="frmQR.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmRealizarDespacho.Designer.vb">
+      <DependentUpon>frmRealizarDespacho.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRealizarDespacho.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmReporte.Designer.vb">
       <DependentUpon>frmReporte.vb</DependentUpon>
     </Compile>
@@ -243,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmQR.resx">
       <DependentUpon>frmQR.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRealizarDespacho.resx">
+      <DependentUpon>frmRealizarDespacho.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporte.resx">
       <DependentUpon>frmReporte.vb</DependentUpon>

@@ -77,3 +77,4 @@ C:\Users\basti_000\Desktop\Cubicacion\Cubicacion\obj\x86\Debug\Cubicacion.frmUsu
 C:\Users\basti_000\Desktop\Cubicacion\Cubicacion\obj\x86\Debug\Cubicacion.frmVisualizarCubiculos.resources
 C:\Users\basti_000\Desktop\Cubicacion\Cubicacion\obj\x86\Debug\Cubicacion.Resources.resources
 C:\Users\basti_000\Desktop\Cubicacion\Cubicacion\obj\x86\Debug\Cubicacion.vbproj.GenerateResource.Cache
+C:\Users\basti_000\Desktop\Cubicacion\Cubicacion\obj\x86\Debug\Cubicacion.frmRealizarDespacho.resources

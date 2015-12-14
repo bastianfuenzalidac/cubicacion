@@ -28,14 +28,15 @@ Public Class Form1
             'DataGridView1.Columns(2).HeaderText = "% Disponible"
             DataGridView1.Columns(0).Width = 70
             DataGridView1.Columns(1).Width = 115
-            DataGridView1.Columns(2).Width = 35
-            DataGridView1.Columns(3).Width = 35
+            DataGridView1.Columns(2).Width = 70
+            DataGridView1.Columns(3).Visible = False
 
+            'DataGridView1.Columns(4).Visible = False
             With DataGridView1
                 ' alternar colores  
-                .RowsDefaultCellStyle.BackColor = Color.MediumAquamarine
+                .RowsDefaultCellStyle.BackColor = Color.Silver
 
-                .AlternatingRowsDefaultCellStyle.BackColor = Color.Khaki
+                .AlternatingRowsDefaultCellStyle.BackColor = Color.White
                 .ForeColor = Color.Black
                 .DefaultCellStyle.SelectionForeColor = Color.Black
                 .DefaultCellStyle.SelectionBackColor = Color.LightSteelBlue
@@ -43,6 +44,8 @@ Public Class Form1
             End With
 
             cnn.Close()
+
+
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -126,11 +129,6 @@ Public Class Form1
         cargardataEstadoPiso()
     End Sub
 
-    Private Sub DespachoToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles DespachoToolStripMenuItem.Click
-        frmInfoDespacho.MdiParent = Me
-        frmInfoDespacho.Show()
-    End Sub
-
     Private Sub UsuariosToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles UsuariosToolStripMenuItem.Click
         frmUsuarios.MdiParent = Me
         frmUsuarios.Show()
@@ -138,5 +136,29 @@ Public Class Form1
 
     Private Sub ProveedoresToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ProveedoresToolStripMenuItem.Click
 
+    End Sub
+
+    Private Sub RealizarDespachoToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles RealizarDespachoToolStripMenuItem.Click
+        frmRealizarDespacho.MdiParent = Me
+        frmRealizarDespacho.Show()
+    End Sub
+
+ 
+
+    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
+        cargardataFechaSalida()
+
+    End Sub
+
+    Private Sub DataGridView1_CellFormatting(sender As Object, e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles DataGridView1.CellFormatting
+        Dim row As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
+        Dim cell As DataGridViewCell = DataGridView1.Rows(e.RowIndex).Cells(3)
+
+        If CStr(cell.Value) = "3" Then
+            row.DefaultCellStyle.BackColor = Color.Blue
+        ElseIf CStr(cell.Value) = "2" Then
+            row.DefaultCellStyle.BackColor = Color.Red
+
+        End If
     End Sub
 End Class

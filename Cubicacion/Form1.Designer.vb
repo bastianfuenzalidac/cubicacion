@@ -39,12 +39,14 @@ Partial Class Form1
         Me.IngresoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CargaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DespachoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RealizarDespachoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProveedoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.ProveedoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -70,13 +72,13 @@ Partial Class Form1
         'CubiculosToolStripMenuItem
         '
         Me.CubiculosToolStripMenuItem.Name = "CubiculosToolStripMenuItem"
-        Me.CubiculosToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CubiculosToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
         Me.CubiculosToolStripMenuItem.Text = "Cubiculos"
         '
         'UsuariosToolStripMenuItem
         '
         Me.UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem"
-        Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
         Me.UsuariosToolStripMenuItem.Text = "Usuarios"
         '
         'VerToolStripMenuItem
@@ -157,9 +159,22 @@ Partial Class Form1
         '
         'DespachoToolStripMenuItem
         '
+        Me.DespachoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RealizarDespachoToolStripMenuItem})
         Me.DespachoToolStripMenuItem.Name = "DespachoToolStripMenuItem"
         Me.DespachoToolStripMenuItem.Size = New System.Drawing.Size(71, 20)
         Me.DespachoToolStripMenuItem.Text = "Despacho"
+        '
+        'RealizarDespachoToolStripMenuItem
+        '
+        Me.RealizarDespachoToolStripMenuItem.Name = "RealizarDespachoToolStripMenuItem"
+        Me.RealizarDespachoToolStripMenuItem.Size = New System.Drawing.Size(169, 22)
+        Me.RealizarDespachoToolStripMenuItem.Text = "Realizar Despacho"
+        '
+        'ProveedoresToolStripMenuItem
+        '
+        Me.ProveedoresToolStripMenuItem.Name = "ProveedoresToolStripMenuItem"
+        Me.ProveedoresToolStripMenuItem.Size = New System.Drawing.Size(84, 20)
+        Me.ProveedoresToolStripMenuItem.Text = "Proveedores"
         '
         'Label1
         '
@@ -211,24 +226,6 @@ Partial Class Form1
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(271, 436)
         Me.TableLayoutPanel1.TabIndex = 8
         '
-        'Label2
-        '
-        Me.Label2.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Label2.Location = New System.Drawing.Point(5, 99)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(261, 27)
-        Me.Label2.TabIndex = 2
-        Me.Label2.Text = "Cola Objetos Piso"
-        Me.Label2.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        '
-        'ProveedoresToolStripMenuItem
-        '
-        Me.ProveedoresToolStripMenuItem.Name = "ProveedoresToolStripMenuItem"
-        Me.ProveedoresToolStripMenuItem.Size = New System.Drawing.Size(84, 20)
-        Me.ProveedoresToolStripMenuItem.Text = "Proveedores"
-        '
         'DataGridView2
         '
         Me.DataGridView2.AllowUserToAddRows = False
@@ -247,11 +244,33 @@ Partial Class Form1
         Me.DataGridView2.Size = New System.Drawing.Size(261, 300)
         Me.DataGridView2.TabIndex = 3
         '
+        'Label2
+        '
+        Me.Label2.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Label2.Location = New System.Drawing.Point(5, 99)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(261, 27)
+        Me.Label2.TabIndex = 2
+        Me.Label2.Text = "Cola Objetos Piso"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(612, 307)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 10
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1007, 460)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.IsMdiContainer = True
@@ -291,4 +310,6 @@ Partial Class Form1
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents ProveedoresToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents DataGridView2 As System.Windows.Forms.DataGridView
+    Friend WithEvents RealizarDespachoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 End Class

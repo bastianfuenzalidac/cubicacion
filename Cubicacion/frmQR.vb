@@ -109,10 +109,6 @@ Public Class frmQR
         End If
     End Sub
 
-    Private Sub txtQR_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtQR.TextChanged
-
-    End Sub
-
     Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
         txtAlto.Text = ""
         txtLargo.Text = ""
