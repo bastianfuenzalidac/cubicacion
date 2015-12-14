@@ -143,13 +143,6 @@ Public Class Form1
         frmRealizarDespacho.Show()
     End Sub
 
- 
-
-    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
-        cargardataFechaSalida()
-
-    End Sub
-
     Private Sub DataGridView1_CellFormatting(sender As Object, e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles DataGridView1.CellFormatting
         Dim row As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
         Dim cell As DataGridViewCell = DataGridView1.Rows(e.RowIndex).Cells(3)

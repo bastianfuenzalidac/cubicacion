@@ -342,4 +342,7 @@ Public Class frmQR
         End Try
     End Sub
 
+    Private Sub txtQR_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtQR.TextChanged
+
+    End Sub
 End Class

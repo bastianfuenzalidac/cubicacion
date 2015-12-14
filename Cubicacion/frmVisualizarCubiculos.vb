@@ -30,7 +30,6 @@ Public Class frmVisualizarCubiculos
             DataGridView1.DataSource = dtTable
             DataGridView1.Columns(0).HeaderText = ""
 
-        
             Dim cmd4 As New SqlCommand("sp_CrearBitacora", cnn)
 
             cmd4.CommandType = CommandType.StoredProcedure

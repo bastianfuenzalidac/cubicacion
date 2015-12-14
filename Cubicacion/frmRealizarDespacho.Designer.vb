@@ -30,6 +30,8 @@ Partial Class frmRealizarDespacho
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.txtObservacion = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -38,9 +40,9 @@ Partial Class frmRealizarDespacho
         Me.txtQR.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtQR.Location = New System.Drawing.Point(15, 62)
         Me.txtQR.Name = "txtQR"
-        Me.txtQR.Size = New System.Drawing.Size(373, 26)
+        Me.txtQR.Size = New System.Drawing.Size(398, 26)
         Me.txtQR.TabIndex = 10
-        Me.txtQR.Text = "Escanee el Codigo QR o Ingrese N° Orden" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.txtQR.Text = "Escanee el Codigo QR o Ingrese N° Orden"
         Me.txtQR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label12
@@ -79,15 +81,20 @@ Partial Class frmRealizarDespacho
         '
         'DataGridView1
         '
+        Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.DataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells
+        Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.Control
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(15, 94)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(373, 87)
+        Me.DataGridView1.RowHeadersVisible = False
+        Me.DataGridView1.Size = New System.Drawing.Size(398, 40)
         Me.DataGridView1.TabIndex = 26
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(313, 191)
+        Me.Button1.Location = New System.Drawing.Point(338, 195)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 27
@@ -96,18 +103,37 @@ Partial Class frmRealizarDespacho
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(210, 191)
+        Me.Button2.Location = New System.Drawing.Point(235, 195)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(97, 23)
         Me.Button2.TabIndex = 28
         Me.Button2.Text = "Cambiar Fecha"
         Me.Button2.UseVisualStyleBackColor = True
         '
+        'txtObservacion
+        '
+        Me.txtObservacion.Location = New System.Drawing.Point(88, 140)
+        Me.txtObservacion.Multiline = True
+        Me.txtObservacion.Name = "txtObservacion"
+        Me.txtObservacion.Size = New System.Drawing.Size(325, 49)
+        Me.txtObservacion.TabIndex = 29
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(12, 143)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(70, 13)
+        Me.Label1.TabIndex = 30
+        Me.Label1.Text = "Observación:"
+        '
         'frmRealizarDespacho
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(408, 228)
+        Me.ClientSize = New System.Drawing.Size(428, 227)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.txtObservacion)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.DataGridView1)
@@ -117,7 +143,8 @@ Partial Class frmRealizarDespacho
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.txtQR)
         Me.Name = "frmRealizarDespacho"
-        Me.Text = "frmRealizarDespacho"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Salida Despacho"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -131,4 +158,6 @@ Partial Class frmRealizarDespacho
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents txtObservacion As System.Windows.Forms.TextBox
+    Friend WithEvents Label1 As System.Windows.Forms.Label
 End Class
