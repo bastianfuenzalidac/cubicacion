@@ -5,6 +5,7 @@ Imports System
 Public Class frmIniciar
     Dim variable As SqlDataReader
     Dim consulta As New SqlCommand
+    Dim bloqueo As String
     Protected configuracion As ConnectionStringSettings = ConfigurationManager.ConnectionStrings("cnn")
     Dim cnn As New SqlConnection(configuracion.ConnectionString)
     Public Sub cargardata()
@@ -40,12 +41,12 @@ Public Class frmIniciar
         End Try
     End Sub
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-
+        Dim id_Empleado, count_Estado As String
         If cnn.State = ConnectionState.Open Then
             cnn.Close()
         End If
         cnn.Open()
-        Dim query As String = "select * from tbl_Empleado where tbl_Empleado.Usuario = @usuario and tbl_Empleado.Contraseña= @contraseña;"
+        Dim query As String = "select * from tbl_Empleado where tbl_Empleado.Usuario = @usuario and tbl_Empleado.Contraseña= @contraseña"
         Dim cmd1 As New SqlClient.SqlCommand(query, cnn)
         cmd1.Parameters.AddWithValue("@usuario", TextBox1.Text)
         cmd1.Parameters.AddWithValue("@contraseña", TextBox2.Text)
@@ -54,28 +55,48 @@ Public Class frmIniciar
         Dim reader As SqlDataReader = cmd1.ExecuteReader()
 
         If reader.Read() Then
-            Dim nombre As String = Convert.ToString(reader("primer_Nombre")).Trim
-            Dim apellido As String = Convert.ToString(reader("apellido_Paterno")).Trim
-            lblInfo.Text = (reader("id_Empleado"))
+            If (reader("estado_Empleado")) = "1" Then
+                Dim nombre As String = Convert.ToString(reader("primer_Nombre")).Trim
+                Dim apellido As String = Convert.ToString(reader("apellido_Paterno")).Trim
+                lblInfo.Text = (reader("id_Empleado"))
 
-            clsLogin.IdUsuario = (reader("id_Empleado"))
-            clsLogin.NombreUsuario = Convert.ToString(reader("primer_Nombre")).Trim & " " & Convert.ToString(reader("apellido_Paterno")).Trim
-            reader.Close()
-            Dim cmd4 As New SqlCommand("sp_CrearBitacora", cnn)
+                clsLogin.IdUsuario = (reader("id_Empleado"))
+                clsLogin.NombreUsuario = Convert.ToString(reader("primer_Nombre")).Trim & " " & Convert.ToString(reader("apellido_Paterno")).Trim
+                reader.Close()
+                Dim cmd4 As New SqlCommand("sp_CrearBitacora", cnn)
 
-            cmd4.CommandType = CommandType.StoredProcedure
+                cmd4.CommandType = CommandType.StoredProcedure
 
-            cmd4.Parameters.AddWithValue("@fecha_Ingreso", Date.Now)
-            cmd4.Parameters.AddWithValue("@id_EmpleadoIngreso", clsLogin.IdUsuario)
-            cmd4.Parameters.AddWithValue("@Detalle", "LOGIN CORRECTO, USUARIO: " & TextBox1.Text)
-            cmd4.Parameters.AddWithValue("@Tipo", 7)
-            cmd4.ExecuteNonQuery()
+                cmd4.Parameters.AddWithValue("@fecha_Ingreso", Date.Now)
+                cmd4.Parameters.AddWithValue("@id_EmpleadoIngreso", clsLogin.IdUsuario)
+                cmd4.Parameters.AddWithValue("@Detalle", "LOGIN CORRECTO, USUARIO: " & TextBox1.Text)
+                cmd4.Parameters.AddWithValue("@Tipo", 7)
+                cmd4.ExecuteNonQuery()
+
+                Dim query2 As String = "select id_empleado, count_Estado from tbl_Empleado where tbl_Empleado.Usuario = '" + TextBox1.Text + "'"
+                Dim cmd5 As New SqlClient.SqlCommand(query2, cnn)
+
+                Dim reader2 As SqlDataReader = cmd5.ExecuteReader()
+
+                If reader2.Read() Then
+                    id_Empleado = (reader2("id_Empleado"))
+                    count_Estado = (reader2("count_Estado"))
+                    reader2.Close()
+                    Dim cmd3 As New SqlCommand("sp_ModificarCountEstado", cnn)
+
+                    cmd3.CommandType = CommandType.StoredProcedure
+                    cmd3.Parameters.AddWithValue("@id_Empleado", id_Empleado)
+                    cmd3.Parameters.AddWithValue("@count_Estado", 0)
+                    cmd3.ExecuteNonQuery()
+                End If
 
 
-
-            Form1.Show()
-            Me.Close()
-
+                Form1.Show()
+                Me.Close()
+            ElseIf (reader("estado_Empleado")) = "2" Then
+                MsgBox("Usuario bloqueado, contacte al administrador", MsgBoxStyle.Exclamation, "Atención")
+                Return
+            End If
 
         Else
             If TextBox1.Text = "" Then
@@ -88,7 +109,7 @@ Public Class frmIniciar
                 MsgBox("Ingrese Nombre de Usuario y Contraseña", MsgBoxStyle.Information, "Faltan Datos")
                 Return
             Else
-                MsgBox("Nombre de Usuario o Contraseña Incorrectos", MsgBoxStyle.Information, "Faltan Datos")
+
                 reader.Close()
                 Dim cmd2 As New SqlCommand("sp_CrearBitacora", cnn)
 
@@ -100,11 +121,58 @@ Public Class frmIniciar
                 cmd2.Parameters.AddWithValue("@Tipo", 7)
                 cmd2.ExecuteNonQuery()
 
-                Return
+                Dim query2 As String = "select id_empleado, count_Estado, estado_Empleado from tbl_Empleado where tbl_Empleado.Usuario = '" + TextBox1.Text + "'"
+                Dim cmd4 As New SqlClient.SqlCommand(query2, cnn)
+
+                Dim reader2 As SqlDataReader = cmd4.ExecuteReader()
+
+
+
+                If reader2.Read() Then
+                    If (reader2("estado_Empleado")) = "1" Then
+                        id_Empleado = (reader2("id_Empleado"))
+                        count_Estado = (reader2("count_Estado"))
+                        reader2.Close()
+                        Dim cmd3 As New SqlCommand("sp_ModificarCountEstado", cnn)
+
+                        cmd3.CommandType = CommandType.StoredProcedure
+                        cmd3.Parameters.AddWithValue("@id_Empleado", id_Empleado)
+                        cmd3.Parameters.AddWithValue("@count_Estado", CInt(count_Estado) + 1)
+                        cmd3.ExecuteNonQuery()
+
+                        MsgBox("Nombre de Usuario o Contraseña Incorrectos" + Chr(13) + "Intentos Restantes: " & (4 - CInt(count_Estado)), MsgBoxStyle.Information, "Faltan Datos")
+
+                        Dim query3 As String = "select id_empleado, count_Estado from tbl_Empleado where tbl_Empleado.Usuario = '" + TextBox1.Text + "'"
+                        Dim cmd6 As New SqlClient.SqlCommand(query3, cnn)
+
+                        Dim reader3 As SqlDataReader = cmd6.ExecuteReader()
+
+                        If reader3.Read() Then
+                            count_Estado = (reader3("count_Estado"))
+                        End If
+                        reader3.Close()
+                        If CInt(count_Estado) = 5 Then
+
+                            Dim cmd5 As New SqlCommand("sp_BloquearEmpleado", cnn)
+
+                            cmd5.CommandType = CommandType.StoredProcedure
+                            cmd5.Parameters.AddWithValue("@id_Empleado", id_Empleado)
+                            cmd5.Parameters.AddWithValue("@estado_Empleado", "2")
+                            cmd5.ExecuteNonQuery()
+
+                        End If
+
+                        Return
+                    ElseIf (reader2("estado_Empleado")) = "2" Then
+                        MsgBox("Usuario bloqueado, contacte al administrador", MsgBoxStyle.Exclamation, "Atención")
+                        Return
+
+                    End If
+
+                End If
             End If
 
         End If
-
 
         'Dim fila As Integer
         'fila = Me.DataGridView1.CurrentRow.Index
@@ -114,6 +182,8 @@ Public Class frmIniciar
         'Next
         cnn.Close()
     End Sub
+
+ 
 
     Private Sub frmIniciar_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try

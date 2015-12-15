@@ -22,6 +22,7 @@ Partial Class frmInfoDespacho
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmInfoDespacho))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -50,7 +51,16 @@ Partial Class frmInfoDespacho
         Me.lblObservaciones = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.LineShape1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
+        Me.LineShape2 = New Microsoft.VisualBasic.PowerPacks.LineShape()
+        Me.LineShape3 = New Microsoft.VisualBasic.PowerPacks.LineShape()
+        Me.LineShape4 = New Microsoft.VisualBasic.PowerPacks.LineShape()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -59,9 +69,9 @@ Partial Class frmInfoDespacho
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(43, 79)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(74, 17)
+        Me.Label1.Size = New System.Drawing.Size(78, 17)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Proveedor"
+        Me.Label1.Text = "Proveedor:"
         '
         'Label2
         '
@@ -69,9 +79,9 @@ Partial Class frmInfoDespacho
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(49, 49)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(68, 17)
+        Me.Label2.Size = New System.Drawing.Size(72, 17)
         Me.Label2.TabIndex = 1
-        Me.Label2.Text = "N° Orden"
+        Me.Label2.Text = "N° Orden:"
         '
         'Label3
         '
@@ -79,19 +89,19 @@ Partial Class frmInfoDespacho
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(54, 108)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(63, 17)
+        Me.Label3.Size = New System.Drawing.Size(67, 17)
         Me.Label3.TabIndex = 2
-        Me.Label3.Text = "Columna"
+        Me.Label3.Text = "Columna:"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(253, 108)
+        Me.Label4.Location = New System.Drawing.Point(154, 108)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(30, 17)
+        Me.Label4.Size = New System.Drawing.Size(34, 17)
         Me.Label4.TabIndex = 3
-        Me.Label4.Text = "Fila"
+        Me.Label4.Text = "Fila:"
         '
         'Label5
         '
@@ -99,9 +109,9 @@ Partial Class frmInfoDespacho
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.Location = New System.Drawing.Point(14, 140)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(98, 17)
+        Me.Label5.Size = New System.Drawing.Size(102, 17)
         Me.Label5.TabIndex = 4
-        Me.Label5.Text = "Fecha Ingreso"
+        Me.Label5.Text = "Fecha Ingreso:"
         '
         'Label6
         '
@@ -109,9 +119,9 @@ Partial Class frmInfoDespacho
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.Location = New System.Drawing.Point(253, 140)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(90, 17)
+        Me.Label6.Size = New System.Drawing.Size(94, 17)
         Me.Label6.TabIndex = 5
-        Me.Label6.Text = "Fecha Salida"
+        Me.Label6.Text = "Fecha Salida:"
         '
         'Label7
         '
@@ -119,59 +129,59 @@ Partial Class frmInfoDespacho
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.Location = New System.Drawing.Point(3, 9)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(48, 17)
+        Me.Label7.Size = New System.Drawing.Size(52, 17)
         Me.Label7.TabIndex = 6
-        Me.Label7.Text = "Ancho"
+        Me.Label7.Text = "Ancho:"
         '
         'Label8
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(92, 9)
+        Me.Label8.Location = New System.Drawing.Point(87, 9)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(45, 17)
+        Me.Label8.Size = New System.Drawing.Size(49, 17)
         Me.Label8.TabIndex = 7
-        Me.Label8.Text = "Largo"
+        Me.Label8.Text = "Largo:"
         '
         'Label9
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(182, 9)
+        Me.Label9.Location = New System.Drawing.Point(174, 9)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(32, 17)
+        Me.Label9.Size = New System.Drawing.Size(36, 17)
         Me.Label9.TabIndex = 8
-        Me.Label9.Text = "Alto"
+        Me.Label9.Text = "Alto:"
         '
         'Label10
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(264, 9)
+        Me.Label10.Location = New System.Drawing.Point(258, 9)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(40, 17)
+        Me.Label10.Size = New System.Drawing.Size(44, 17)
         Me.Label10.TabIndex = 9
-        Me.Label10.Text = "Peso"
+        Me.Label10.Text = "Peso:"
         '
         'Label11
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(351, 9)
+        Me.Label11.Location = New System.Drawing.Point(344, 9)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(90, 17)
+        Me.Label11.Size = New System.Drawing.Size(94, 17)
         Me.Label11.TabIndex = 10
-        Me.Label11.Text = "Temperatura"
+        Me.Label11.Text = "Temperatura:"
         '
         'Label12
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(253, 49)
+        Me.Label12.Location = New System.Drawing.Point(231, 49)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(122, 17)
+        Me.Label12.Size = New System.Drawing.Size(126, 17)
         Me.Label12.TabIndex = 11
-        Me.Label12.Text = "Empleado Ingreso"
+        Me.Label12.Text = "Empleado Ingreso:"
         '
         'Label13
         '
@@ -196,10 +206,10 @@ Partial Class frmInfoDespacho
         'lblEmpledoIngreso
         '
         Me.lblEmpledoIngreso.AutoSize = True
-        Me.lblEmpledoIngreso.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblEmpledoIngreso.Location = New System.Drawing.Point(381, 49)
+        Me.lblEmpledoIngreso.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblEmpledoIngreso.Location = New System.Drawing.Point(353, 49)
         Me.lblEmpledoIngreso.Name = "lblEmpledoIngreso"
-        Me.lblEmpledoIngreso.Size = New System.Drawing.Size(13, 17)
+        Me.lblEmpledoIngreso.Size = New System.Drawing.Size(11, 15)
         Me.lblEmpledoIngreso.TabIndex = 14
         Me.lblEmpledoIngreso.Text = "-"
         '
@@ -227,7 +237,7 @@ Partial Class frmInfoDespacho
         '
         Me.lblFila.AutoSize = True
         Me.lblFila.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFila.Location = New System.Drawing.Point(289, 108)
+        Me.lblFila.Location = New System.Drawing.Point(194, 108)
         Me.lblFila.Name = "lblFila"
         Me.lblFila.Size = New System.Drawing.Size(13, 17)
         Me.lblFila.TabIndex = 17
@@ -236,70 +246,75 @@ Partial Class frmInfoDespacho
         'lblFechaIngreso
         '
         Me.lblFechaIngreso.AutoSize = True
-        Me.lblFechaIngreso.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFechaIngreso.Location = New System.Drawing.Point(123, 140)
+        Me.lblFechaIngreso.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFechaIngreso.Location = New System.Drawing.Point(121, 140)
         Me.lblFechaIngreso.Name = "lblFechaIngreso"
-        Me.lblFechaIngreso.Size = New System.Drawing.Size(13, 17)
+        Me.lblFechaIngreso.Size = New System.Drawing.Size(11, 15)
         Me.lblFechaIngreso.TabIndex = 18
         Me.lblFechaIngreso.Text = "-"
         '
         'lblFechaSalida
         '
         Me.lblFechaSalida.AutoSize = True
-        Me.lblFechaSalida.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFechaSalida.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblFechaSalida.Location = New System.Drawing.Point(349, 140)
         Me.lblFechaSalida.Name = "lblFechaSalida"
-        Me.lblFechaSalida.Size = New System.Drawing.Size(13, 17)
+        Me.lblFechaSalida.Size = New System.Drawing.Size(11, 15)
         Me.lblFechaSalida.TabIndex = 19
         Me.lblFechaSalida.Text = "-"
         '
         'lblAncho
         '
         Me.lblAncho.AutoSize = True
-        Me.lblAncho.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAncho.Location = New System.Drawing.Point(47, 9)
+        Me.lblAncho.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAncho.ForeColor = System.Drawing.Color.Navy
+        Me.lblAncho.Location = New System.Drawing.Point(50, 11)
         Me.lblAncho.Name = "lblAncho"
-        Me.lblAncho.Size = New System.Drawing.Size(13, 17)
+        Me.lblAncho.Size = New System.Drawing.Size(11, 15)
         Me.lblAncho.TabIndex = 20
         Me.lblAncho.Text = "-"
         '
         'lblLargo
         '
         Me.lblLargo.AutoSize = True
-        Me.lblLargo.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLargo.Location = New System.Drawing.Point(143, 9)
+        Me.lblLargo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblLargo.ForeColor = System.Drawing.Color.Navy
+        Me.lblLargo.Location = New System.Drawing.Point(131, 11)
         Me.lblLargo.Name = "lblLargo"
-        Me.lblLargo.Size = New System.Drawing.Size(13, 17)
+        Me.lblLargo.Size = New System.Drawing.Size(11, 15)
         Me.lblLargo.TabIndex = 21
         Me.lblLargo.Text = "-"
         '
         'lblAlto
         '
         Me.lblAlto.AutoSize = True
-        Me.lblAlto.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAlto.Location = New System.Drawing.Point(220, 9)
+        Me.lblAlto.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAlto.ForeColor = System.Drawing.Color.Navy
+        Me.lblAlto.Location = New System.Drawing.Point(205, 11)
         Me.lblAlto.Name = "lblAlto"
-        Me.lblAlto.Size = New System.Drawing.Size(13, 17)
+        Me.lblAlto.Size = New System.Drawing.Size(11, 15)
         Me.lblAlto.TabIndex = 22
         Me.lblAlto.Text = "-"
         '
         'lblPeso
         '
         Me.lblPeso.AutoSize = True
-        Me.lblPeso.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPeso.Location = New System.Drawing.Point(310, 9)
+        Me.lblPeso.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPeso.ForeColor = System.Drawing.Color.Navy
+        Me.lblPeso.Location = New System.Drawing.Point(297, 11)
         Me.lblPeso.Name = "lblPeso"
-        Me.lblPeso.Size = New System.Drawing.Size(13, 17)
+        Me.lblPeso.Size = New System.Drawing.Size(11, 15)
         Me.lblPeso.TabIndex = 23
         Me.lblPeso.Text = "-"
         '
         'lblTemperatura
         '
         Me.lblTemperatura.AutoSize = True
-        Me.lblTemperatura.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTemperatura.Location = New System.Drawing.Point(447, 9)
+        Me.lblTemperatura.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTemperatura.ForeColor = System.Drawing.Color.Navy
+        Me.lblTemperatura.Location = New System.Drawing.Point(433, 11)
         Me.lblTemperatura.Name = "lblTemperatura"
-        Me.lblTemperatura.Size = New System.Drawing.Size(13, 17)
+        Me.lblTemperatura.Size = New System.Drawing.Size(11, 15)
         Me.lblTemperatura.TabIndex = 24
         Me.lblTemperatura.Text = "-"
         '
@@ -336,10 +351,82 @@ Partial Class frmInfoDespacho
         Me.Panel1.Controls.Add(Me.lblAlto)
         Me.Panel1.Controls.Add(Me.Label10)
         Me.Panel1.Controls.Add(Me.Label11)
+        Me.Panel1.Controls.Add(Me.ShapeContainer1)
         Me.Panel1.Location = New System.Drawing.Point(12, 169)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(475, 43)
         Me.Panel1.TabIndex = 27
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(474, 2)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(24, 24)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 28
+        Me.PictureBox1.TabStop = False
+        '
+        'ShapeContainer1
+        '
+        Me.ShapeContainer1.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer1.Name = "ShapeContainer1"
+        Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.LineShape4, Me.LineShape3, Me.LineShape2, Me.LineShape1})
+        Me.ShapeContainer1.Size = New System.Drawing.Size(473, 41)
+        Me.ShapeContainer1.TabIndex = 25
+        Me.ShapeContainer1.TabStop = False
+        '
+        'LineShape1
+        '
+        Me.LineShape1.Name = "LineShape1"
+        Me.LineShape1.X1 = 342
+        Me.LineShape1.X2 = 342
+        Me.LineShape1.Y1 = 0
+        Me.LineShape1.Y2 = 42
+        '
+        'LineShape2
+        '
+        Me.LineShape2.Name = "LineShape2"
+        Me.LineShape2.X1 = 86
+        Me.LineShape2.X2 = 86
+        Me.LineShape2.Y1 = -1
+        Me.LineShape2.Y2 = 41
+        '
+        'LineShape3
+        '
+        Me.LineShape3.Name = "LineShape3"
+        Me.LineShape3.X1 = 171
+        Me.LineShape3.X2 = 171
+        Me.LineShape3.Y1 = -1
+        Me.LineShape3.Y2 = 41
+        '
+        'LineShape4
+        '
+        Me.LineShape4.Name = "LineShape4"
+        Me.LineShape4.X1 = 255
+        Me.LineShape4.X2 = 255
+        Me.LineShape4.Y1 = -1
+        Me.LineShape4.Y2 = 41
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(405, 273)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(83, 24)
+        Me.Button1.TabIndex = 29
+        Me.Button1.Text = "Imprimir"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(316, 273)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(83, 24)
+        Me.Button2.TabIndex = 30
+        Me.Button2.Text = "Exportar"
+        Me.Button2.UseVisualStyleBackColor = True
         '
         'frmInfoDespacho
         '
@@ -347,6 +434,9 @@ Partial Class frmInfoDespacho
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(500, 309)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Label14)
         Me.Controls.Add(Me.lblObservaciones)
@@ -369,8 +459,10 @@ Partial Class frmInfoDespacho
         Me.Name = "frmInfoDespacho"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmInfoDespacho"
+        Me.TopMost = True
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -402,5 +494,13 @@ Partial Class frmInfoDespacho
     Friend WithEvents lblTemperatura As System.Windows.Forms.Label
     Friend WithEvents lblObservaciones As System.Windows.Forms.Label
     Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents ShapeContainer1 As Microsoft.VisualBasic.PowerPacks.ShapeContainer
+    Friend WithEvents LineShape4 As Microsoft.VisualBasic.PowerPacks.LineShape
+    Friend WithEvents LineShape3 As Microsoft.VisualBasic.PowerPacks.LineShape
+    Friend WithEvents LineShape2 As Microsoft.VisualBasic.PowerPacks.LineShape
+    Friend WithEvents LineShape1 As Microsoft.VisualBasic.PowerPacks.LineShape
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Button2 As System.Windows.Forms.Button
 End Class

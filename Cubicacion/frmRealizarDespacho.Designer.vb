@@ -24,7 +24,7 @@ Partial Class frmRealizarDespacho
     Private Sub InitializeComponent()
         Me.txtQR = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
-        Me.Label11 = New System.Windows.Forms.Label()
+        Me.lblEmpleado = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
@@ -53,13 +53,13 @@ Partial Class frmRealizarDespacho
         Me.Label12.Size = New System.Drawing.Size(0, 13)
         Me.Label12.TabIndex = 25
         '
-        'Label11
+        'lblEmpleado
         '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(90, 9)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(0, 13)
-        Me.Label11.TabIndex = 24
+        Me.lblEmpleado.AutoSize = True
+        Me.lblEmpleado.Location = New System.Drawing.Point(85, 10)
+        Me.lblEmpleado.Name = "lblEmpleado"
+        Me.lblEmpleado.Size = New System.Drawing.Size(0, 13)
+        Me.lblEmpleado.TabIndex = 24
         '
         'Label9
         '
@@ -138,7 +138,7 @@ Partial Class frmRealizarDespacho
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Label12)
-        Me.Controls.Add(Me.Label11)
+        Me.Controls.Add(Me.lblEmpleado)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.txtQR)
@@ -152,7 +152,7 @@ Partial Class frmRealizarDespacho
     End Sub
     Friend WithEvents txtQR As System.Windows.Forms.TextBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
-    Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents lblEmpleado As System.Windows.Forms.Label
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView

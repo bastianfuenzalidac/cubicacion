@@ -26,6 +26,9 @@ Partial Class Form1
         Me.AdministraciónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CubiculosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UsuariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CrearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ModificarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DesbloquearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EstadoCubiculosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DespachosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -71,14 +74,33 @@ Partial Class Form1
         'CubiculosToolStripMenuItem
         '
         Me.CubiculosToolStripMenuItem.Name = "CubiculosToolStripMenuItem"
-        Me.CubiculosToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
+        Me.CubiculosToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.CubiculosToolStripMenuItem.Text = "Cubiculos"
         '
         'UsuariosToolStripMenuItem
         '
+        Me.UsuariosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CrearToolStripMenuItem, Me.ModificarToolStripMenuItem, Me.DesbloquearToolStripMenuItem})
         Me.UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem"
-        Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
+        Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.UsuariosToolStripMenuItem.Text = "Usuarios"
+        '
+        'CrearToolStripMenuItem
+        '
+        Me.CrearToolStripMenuItem.Name = "CrearToolStripMenuItem"
+        Me.CrearToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CrearToolStripMenuItem.Text = "Crear"
+        '
+        'ModificarToolStripMenuItem
+        '
+        Me.ModificarToolStripMenuItem.Name = "ModificarToolStripMenuItem"
+        Me.ModificarToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ModificarToolStripMenuItem.Text = "Modificar"
+        '
+        'DesbloquearToolStripMenuItem
+        '
+        Me.DesbloquearToolStripMenuItem.Name = "DesbloquearToolStripMenuItem"
+        Me.DesbloquearToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.DesbloquearToolStripMenuItem.Text = "Desbloquear"
         '
         'VerToolStripMenuItem
         '
@@ -259,13 +281,16 @@ Partial Class Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackgroundImage = Global.Cubicacion.My.Resources.Resources.edelpa1
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(1007, 460)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.MenuStrip1)
+        Me.DoubleBuffered = True
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Form1"
-        Me.Text = "Form1"
+        Me.Text = "Gestión Bodega - EDELPA"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
@@ -300,4 +325,7 @@ Partial Class Form1
     Friend WithEvents ProveedoresToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents DataGridView2 As System.Windows.Forms.DataGridView
     Friend WithEvents RealizarDespachoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CrearToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ModificarToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents DesbloquearToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

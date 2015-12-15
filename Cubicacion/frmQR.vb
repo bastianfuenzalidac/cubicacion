@@ -74,28 +74,34 @@ Public Class frmQR
 
     Private Sub frmQR_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         lblUsuario.Text = clsLogin.NombreUsuario
+        lblNombre.Text = clsLogin.NombreUsuario
     End Sub
 
     Private Sub Button3_Click(sender As System.Object, e As System.EventArgs) Handles Button3.Click
-        Dim cadenacompleta As String
-        Dim aux
-        cadenacompleta = txtQR.Text
-        aux = Split(cadenacompleta, ",")
+        If txtQR.Text = "Escanee el Codigo QR" Then
+            MsgBox("Escanee codigo QR", MsgBoxStyle.Information, "Faltan Datos")
+            Return
+        Else
+            Dim cadenacompleta As String
+            Dim aux
+            cadenacompleta = txtQR.Text
+            aux = Split(cadenacompleta, ",")
 
-        txtAlto.Text = aux(0)
-        txtLargo.Text = aux(1)
-        txtAncho.Text = aux(2)
-        txtPeso.Text = aux(4)
-        txtTemperatura.Text = aux(3)
-        txtCant.Text = aux(5)
-        Label12.Text = aux(6)
-        Label11.Text = aux(7)
-        txtProveedor.Text = aux(8)
-        txtOrden.Text = aux(9)
+            txtAlto.Text = aux(0)
+            txtLargo.Text = aux(1)
+            txtAncho.Text = aux(2)
+            txtPeso.Text = aux(4)
+            txtTemperatura.Text = aux(3)
+            txtCant.Text = aux(5)
+            lblFecha.Text = aux(6)
+            lblNombre.Text = aux(7)
+            txtProveedor.Text = aux(8)
+            txtOrden.Text = aux(9)
 
 
-        cargardataCubiculo()
-        txtQR.Text = "Escanee el Codigo QR"
+            cargardataCubiculo()
+            txtQR.Text = "Escanee el Codigo QR"
+        End If
     End Sub
 
     Private Sub txtQR_Click(sender As Object, e As System.EventArgs) Handles txtQR.Click
@@ -116,14 +122,16 @@ Public Class frmQR
         txtPeso.Text = ""
         txtTemperatura.Text = ""
         txtCant.Text = ""
-        Label12.Text = ""
-        Label11.Text = ""
+        lblFecha.Text = ""
+        lblNombre.Text = ""
         txtProveedor.Text = ""
         txtOrden.Text = ""
         txtObservacion.Text = ""
         txtQR.Text = "Escanee el Codigo QR"
+      
     End Sub
 
+  
     Private Sub Button2_Click(sender As System.Object, e As System.EventArgs) Handles Button2.Click
         Try
 
@@ -305,7 +313,8 @@ Public Class frmQR
                 cmd4.ExecuteNonQuery()
 
                 cnn.Close()
-
+                Form1.cargardataEstadoPiso()
+                Form1.cargardataFechaSalida()
             End If
 
         Catch ex As Exception
@@ -316,11 +325,10 @@ Public Class frmQR
 
     Private Sub Button4_Click(sender As System.Object, e As System.EventArgs) Handles Button4.Click
         cargardataCubiculo()
+    
     End Sub
 
-    Private Sub Button5_Click(sender As System.Object, e As System.EventArgs) Handles Button5.Click
 
-    End Sub
 
     Private Sub txtProveedor_LostFocus(sender As Object, e As System.EventArgs) Handles txtProveedor.LostFocus
         Try
@@ -341,6 +349,7 @@ Public Class frmQR
             MsgBox("txtTelefono")
         End Try
     End Sub
+
 
     Private Sub txtQR_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtQR.TextChanged
 

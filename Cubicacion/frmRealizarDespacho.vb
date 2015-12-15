@@ -68,9 +68,10 @@ Public Class frmRealizarDespacho
 
 
     Private Sub txtQR_KeyDown(sender As Object, e As System.Windows.Forms.KeyEventArgs) Handles txtQR.KeyDown
+        cargardatos()
         If e.KeyCode = Keys.Enter Then
-            If Exists(txtQR.Text) Then
-                cargardatos()
+            If Exists(norden) Then
+
                 realizarDespacho()
             Else
                 MsgBox("Orden no se encuentra registrada en la base de datos", MsgBoxStyle.Information, "Atención")
@@ -176,6 +177,7 @@ Public Class frmRealizarDespacho
                         cmd.ExecuteNonQuery()
 
                         Form1.cargardataFechaSalida()
+                        Form1.cargardataEstadoPiso()
                         cnn.Close()
                         MsgBox("Exito al registrar despacho", MsgBoxStyle.Information, "Atención")
                         DataGridView1.DataSource = Nothing
@@ -201,5 +203,9 @@ Public Class frmRealizarDespacho
 
     Private Sub txtQR_Click(sender As Object, e As System.EventArgs) Handles txtQR.Click
         txtQR.SelectAll()
+    End Sub
+
+    Private Sub frmRealizarDespacho_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        lblEmpleado.Text = clsLogin.NombreUsuario
     End Sub
 End Class

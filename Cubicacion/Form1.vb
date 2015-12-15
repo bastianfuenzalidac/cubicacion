@@ -30,8 +30,8 @@ Public Class Form1
             DataGridView1.Columns(1).Width = 115
             DataGridView1.Columns(2).Width = 70
             DataGridView1.Columns(3).Visible = False
+            DataGridView1.Columns(4).Visible = False
 
-            'DataGridView1.Columns(4).Visible = False
             With DataGridView1
                 ' alternar colores  
                 .RowsDefaultCellStyle.BackColor = Color.Silver
@@ -127,12 +127,9 @@ Public Class Form1
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         cargardataFechaSalida()
         cargardataEstadoPiso()
+
     End Sub
 
-    Private Sub UsuariosToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles UsuariosToolStripMenuItem.Click
-        frmUsuarios.MdiParent = Me
-        frmUsuarios.Show()
-    End Sub
 
     Private Sub ProveedoresToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ProveedoresToolStripMenuItem.Click
 
@@ -141,6 +138,10 @@ Public Class Form1
     Private Sub RealizarDespachoToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles RealizarDespachoToolStripMenuItem.Click
         frmRealizarDespacho.MdiParent = Me
         frmRealizarDespacho.Show()
+    End Sub
+
+    Private Sub DataGridView1_CellContentClick(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+   
     End Sub
 
     Private Sub DataGridView1_CellFormatting(sender As Object, e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles DataGridView1.CellFormatting
@@ -153,5 +154,15 @@ Public Class Form1
             row.DefaultCellStyle.BackColor = Color.Red
 
         End If
+    End Sub
+
+    Private Sub CrearToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles CrearToolStripMenuItem.Click
+        frmUsuarios.MdiParent = Me
+        frmUsuarios.Show()
+    End Sub
+
+    Private Sub DataGridView1_DoubleClick(sender As Object, e As System.EventArgs) Handles DataGridView1.DoubleClick
+        frmInfoDespacho.norden = DataGridView1.Rows(DataGridView1.CurrentRow.Index).Cells(4).Value
+        frmInfoDespacho.Show()
     End Sub
 End Class
