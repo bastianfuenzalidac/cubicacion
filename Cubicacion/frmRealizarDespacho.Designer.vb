@@ -29,7 +29,6 @@ Partial Class frmRealizarDespacho
         Me.Label10 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.txtObservacion = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -48,7 +47,7 @@ Partial Class frmRealizarDespacho
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(90, 35)
+        Me.Label12.Location = New System.Drawing.Point(53, 36)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(0, 13)
         Me.Label12.TabIndex = 25
@@ -94,21 +93,13 @@ Partial Class frmRealizarDespacho
         '
         'Button1
         '
+        Me.Button1.Enabled = False
         Me.Button1.Location = New System.Drawing.Point(338, 195)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 27
         Me.Button1.Text = "Despachar"
         Me.Button1.UseVisualStyleBackColor = True
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(235, 195)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(97, 23)
-        Me.Button2.TabIndex = 28
-        Me.Button2.Text = "Cambiar Fecha"
-        Me.Button2.UseVisualStyleBackColor = True
         '
         'txtObservacion
         '
@@ -134,7 +125,6 @@ Partial Class frmRealizarDespacho
         Me.ClientSize = New System.Drawing.Size(428, 227)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtObservacion)
-        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Label12)
@@ -157,7 +147,6 @@ Partial Class frmRealizarDespacho
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents txtObservacion As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
 End Class

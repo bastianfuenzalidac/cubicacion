@@ -91,46 +91,74 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsLogin.vb" />
-    <Compile Include="DsArticulos3.Designer.vb">
+    <Compile Include="Crystal Reports\crDetalleCubiculos.vb">
+      <DependentUpon>crDetalleCubiculos.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="DS\DsDetalleCubiculos.Designer.vb">
+      <DependentUpon>DsDetalleCubiculos.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="DS\DsDetalleCubiculos.vb">
+      <DependentUpon>DsDetalleCubiculos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Crystal Reports\crDespachosCreados.vb">
+      <DependentUpon>crDespachosCreados.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="DS\DsDespachosCreados.Designer.vb">
+      <DependentUpon>DsDespachosCreados.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="DS\DsDespachosCreados.vb">
+      <DependentUpon>DsDespachosCreados.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DS\DsArticulos3.Designer.vb">
       <DependentUpon>DsArticulos3.xsd</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="DsArticulos3.vb">
+    <Compile Include="DS\DsArticulos3.vb">
       <DependentUpon>DsArticulos3.xsd</DependentUpon>
     </Compile>
-    <Compile Include="CrystalReport3.vb">
+    <Compile Include="Crystal Reports\CrystalReport3.vb">
       <DependentUpon>CrystalReport3.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="DsArticulos2.Designer.vb">
+    <Compile Include="DS\DsArticulos2.Designer.vb">
       <DependentUpon>DsArticulos2.xsd</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="DsArticulos2.vb">
+    <Compile Include="DS\DsArticulos2.vb">
       <DependentUpon>DsArticulos2.xsd</DependentUpon>
     </Compile>
-    <Compile Include="CrystalReport2.vb">
+    <Compile Include="Crystal Reports\CrystalReport2.vb">
       <DependentUpon>CrystalReport2.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="CrystalReport1.vb">
+    <Compile Include="Crystal Reports\CrystalReport1.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CrystalReport1.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="DsArticulos.Designer.vb">
+    <Compile Include="DS\DsArticulos.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DsArticulos.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DsArticulos.vb">
+    <Compile Include="DS\DsArticulos.vb">
       <DependentUpon>DsArticulos.xsd</DependentUpon>
     </Compile>
     <Compile Include="Form1.vb">
@@ -146,6 +174,24 @@
     <Compile Include="frmAdmCubiculos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmDespachosCreados.Designer.vb">
+      <DependentUpon>frmDespachosCreados.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDespachosCreados.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDespachosPendientes.Designer.vb">
+      <DependentUpon>frmDespachosPendientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDespachosPendientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDetalleCubiculos.Designer.vb">
+      <DependentUpon>frmDetalleCubiculos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDetalleCubiculos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmInfoDespacho.Designer.vb">
       <DependentUpon>frmInfoDespacho.vb</DependentUpon>
     </Compile>
@@ -156,6 +202,12 @@
       <DependentUpon>frmIniciar.vb</DependentUpon>
     </Compile>
     <Compile Include="frmIniciar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProveedores.Designer.vb">
+      <DependentUpon>frmProveedores.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmProveedores.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmQR.Designer.vb">
@@ -223,29 +275,50 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CrystalReport3.rpt">
+    <EmbeddedResource Include="Crystal Reports\crDetalleCubiculos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crDetalleCubiculos.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crystal Reports\crDespachosCreados.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crDespachosCreados.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crystal Reports\CrystalReport3.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport3.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="CrystalReport2.rpt">
+    <EmbeddedResource Include="Crystal Reports\CrystalReport2.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport2.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="CrystalReport1.rpt">
+    <EmbeddedResource Include="Crystal Reports\CrystalReport1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport1.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAdmCubiculos.resx">
       <DependentUpon>frmAdmCubiculos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDespachosCreados.resx">
+      <DependentUpon>frmDespachosCreados.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDespachosPendientes.resx">
+      <DependentUpon>frmDespachosPendientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDetalleCubiculos.resx">
+      <DependentUpon>frmDetalleCubiculos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInfoDespacho.resx">
       <DependentUpon>frmInfoDespacho.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmIniciar.resx">
       <DependentUpon>frmIniciar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProveedores.resx">
+      <DependentUpon>frmProveedores.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmQR.resx">
       <DependentUpon>frmQR.vb</DependentUpon>
@@ -280,37 +353,59 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="DsArticulos3.xsc">
+    <None Include="DS\DsDetalleCubiculos.xsc">
+      <DependentUpon>DsDetalleCubiculos.xsd</DependentUpon>
+    </None>
+    <None Include="DS\DsDetalleCubiculos.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsDetalleCubiculos.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DS\DsDetalleCubiculos.xss">
+      <DependentUpon>DsDetalleCubiculos.xsd</DependentUpon>
+    </None>
+    <None Include="DS\DsDespachosCreados.xsc">
+      <DependentUpon>DsDespachosCreados.xsd</DependentUpon>
+    </None>
+    <None Include="DS\DsDespachosCreados.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsDespachosCreados.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DS\DsDespachosCreados.xss">
+      <DependentUpon>DsDespachosCreados.xsd</DependentUpon>
+    </None>
+    <None Include="DS\DsArticulos3.xsc">
       <DependentUpon>DsArticulos3.xsd</DependentUpon>
     </None>
-    <None Include="DsArticulos3.xsd">
+    <None Include="DS\DsArticulos3.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DsArticulos3.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DsArticulos3.xss">
+    <None Include="DS\DsArticulos3.xss">
       <DependentUpon>DsArticulos3.xsd</DependentUpon>
     </None>
-    <None Include="DsArticulos2.xsc">
+    <None Include="DS\DsArticulos2.xsc">
       <DependentUpon>DsArticulos2.xsd</DependentUpon>
     </None>
-    <None Include="DsArticulos2.xsd">
+    <None Include="DS\DsArticulos2.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DsArticulos2.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DsArticulos2.xss">
+    <None Include="DS\DsArticulos2.xss">
       <DependentUpon>DsArticulos2.xsd</DependentUpon>
     </None>
-    <None Include="DsArticulos.xsc">
+    <None Include="DS\DsArticulos.xsc">
       <DependentUpon>DsArticulos.xsd</DependentUpon>
     </None>
-    <None Include="DsArticulos.xsd">
+    <None Include="DS\DsArticulos.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DsArticulos.Designer.vb</LastGenOutput>
     </None>
-    <None Include="DsArticulos.xss">
+    <None Include="DS\DsArticulos.xss">
       <DependentUpon>DsArticulos.xsd</DependentUpon>
     </None>
     <None Include="My Project\app.manifest" />

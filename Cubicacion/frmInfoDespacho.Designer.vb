@@ -57,8 +57,6 @@ Partial Class frmInfoDespacho
         Me.LineShape2 = New Microsoft.VisualBasic.PowerPacks.LineShape()
         Me.LineShape3 = New Microsoft.VisualBasic.PowerPacks.LineShape()
         Me.LineShape4 = New Microsoft.VisualBasic.PowerPacks.LineShape()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -97,7 +95,7 @@ Partial Class frmInfoDespacho
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(154, 108)
+        Me.Label4.Location = New System.Drawing.Point(231, 108)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(34, 17)
         Me.Label4.TabIndex = 3
@@ -237,7 +235,7 @@ Partial Class frmInfoDespacho
         '
         Me.lblFila.AutoSize = True
         Me.lblFila.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFila.Location = New System.Drawing.Point(194, 108)
+        Me.lblFila.Location = New System.Drawing.Point(271, 108)
         Me.lblFila.Name = "lblFila"
         Me.lblFila.Size = New System.Drawing.Size(13, 17)
         Me.lblFila.TabIndex = 17
@@ -410,32 +408,12 @@ Partial Class frmInfoDespacho
         Me.LineShape4.Y1 = -1
         Me.LineShape4.Y2 = 41
         '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(405, 273)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(83, 24)
-        Me.Button1.TabIndex = 29
-        Me.Button1.Text = "Imprimir"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(316, 273)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(83, 24)
-        Me.Button2.TabIndex = 30
-        Me.Button2.Text = "Exportar"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
         'frmInfoDespacho
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(500, 309)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
+        Me.ClientSize = New System.Drawing.Size(500, 282)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Label14)
@@ -501,6 +479,4 @@ Partial Class frmInfoDespacho
     Friend WithEvents LineShape3 As Microsoft.VisualBasic.PowerPacks.LineShape
     Friend WithEvents LineShape2 As Microsoft.VisualBasic.PowerPacks.LineShape
     Friend WithEvents LineShape1 As Microsoft.VisualBasic.PowerPacks.LineShape
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
 End Class

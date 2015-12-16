@@ -237,8 +237,7 @@ Public Class frmVisualizarCubiculos
 
             For i As Integer = 0 To DataGridView1.RowCount - 1
                 For j As Integer = 1 To DataGridView1.ColumnCount - 1
-                    'MsgBox(DataGridView1.Rows(i).Cells(j).Value.ToString)
-                    If DataGridView1.Rows(i).Cells(j).Value.ToString >= "30" And e.RowIndex = i And e.ColumnIndex = j Then
+                 If DataGridView1.Rows(i).Cells(j).Value.ToString >= "30" And e.RowIndex = i And e.ColumnIndex = j Then
                         e.CellStyle.BackColor = Color.Yellow
                         e.CellStyle.ForeColor = Color.Black
 
@@ -260,8 +259,8 @@ Public Class frmVisualizarCubiculos
                         'ElseIf DataGridView1.Rows(i).Cells(j).Value.ToString() = "5" AndAlso e.RowIndex = i AndAlso e.ColumnIndex = j Then
                         '    e.CellStyle.BackColor = Color.Aqua
                         '    e.CellStyle.ForeColor = Color.Aqua
-                    End If
 
+                    End If
                 Next
 
             Next

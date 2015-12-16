@@ -127,12 +127,19 @@ Public Class Form1
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         cargardataFechaSalida()
         cargardataEstadoPiso()
+        If clsLogin.Rol = "2" Then
+            AdministraciónToolStripMenuItem.Visible = False
+            ProveedoresToolStripMenuItem.Visible = False
+            EstadoToolStripMenuItem.Visible = False
+            DespachosToolStripMenuItem.Visible = False
 
+        End If
     End Sub
 
 
     Private Sub ProveedoresToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ProveedoresToolStripMenuItem.Click
-
+        frmProveedores.MdiParent = Me
+        frmProveedores.Show()
     End Sub
 
     Private Sub RealizarDespachoToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles RealizarDespachoToolStripMenuItem.Click
@@ -165,4 +172,21 @@ Public Class Form1
         frmInfoDespacho.norden = DataGridView1.Rows(DataGridView1.CurrentRow.Index).Cells(4).Value
         frmInfoDespacho.Show()
     End Sub
+
+    Private Sub ToolStripMenuItem1_Click(sender As System.Object, e As System.EventArgs) Handles ToolStripMenuItem1.Click
+        frmdespachoscreados.MdiParent = Me
+        frmdespachoscreados.Show()
+    End Sub
+
+    Private Sub PorFechaToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles PorFechaToolStripMenuItem.Click
+        frmDespachosPendientes.MdiParent = Me
+        frmDespachosPendientes.Show()
+    End Sub
+
+
+    Private Sub DetalleCubiculosToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles DetalleCubiculosToolStripMenuItem.Click
+        frmDetalleCubiculos.MdiParent = Me
+        frmDetalleCubiculos.Show()
+    End Sub
+
 End Class

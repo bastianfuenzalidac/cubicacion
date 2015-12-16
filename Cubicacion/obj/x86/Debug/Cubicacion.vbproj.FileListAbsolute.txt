@@ -78,3 +78,7 @@ C:\Users\basti_000\Desktop\Cubicacion\Cubicacion\obj\x86\Debug\Cubicacion.frmVis
 C:\Users\basti_000\Desktop\Cubicacion\Cubicacion\obj\x86\Debug\Cubicacion.Resources.resources
 C:\Users\basti_000\Desktop\Cubicacion\Cubicacion\obj\x86\Debug\Cubicacion.vbproj.GenerateResource.Cache
 C:\Users\basti_000\Desktop\Cubicacion\Cubicacion\obj\x86\Debug\Cubicacion.frmRealizarDespacho.resources
+C:\Users\basti_000\Desktop\Cubicacion\Cubicacion\obj\x86\Debug\Cubicacion.frmdespachoscreados.resources
+C:\Users\basti_000\Desktop\Cubicacion\Cubicacion\obj\x86\Debug\Cubicacion.frmDespachosPendientes.resources
+C:\Users\basti_000\Desktop\Cubicacion\Cubicacion\obj\x86\Debug\Cubicacion.frmDetalleCubiculos.resources
+C:\Users\basti_000\Desktop\Cubicacion\Cubicacion\obj\x86\Debug\Cubicacion.frmProveedores.resources

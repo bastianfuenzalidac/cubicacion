@@ -2,7 +2,7 @@
 Imports System.Text.RegularExpressions
 Imports System.Configuration
 Public Class frmRealizarDespacho
-    Dim norden, idDespacho, idCapacidad, idObjeto As String
+    Dim norden, idDespacho, idCapacidad, idObjeto, idCubiculo As String
     Protected configuracion As ConnectionStringSettings = ConfigurationManager.ConnectionStrings("cnn")
     Dim cnn As New SqlConnection(configuracion.ConnectionString)
 
@@ -73,11 +73,13 @@ Public Class frmRealizarDespacho
             If Exists(norden) Then
 
                 realizarDespacho()
+                Button1.Enabled = True
             Else
                 MsgBox("Orden no se encuentra registrada en la base de datos", MsgBoxStyle.Information, "Atención")
                 txtQR.Text = "Escanee el Codigo QR o Ingrese N° Orden"
                 txtQR.SelectAll()
                 cnn.Close()
+                Button1.Enabled = False
                 Return
             End If
         End If
@@ -107,7 +109,7 @@ Public Class frmRealizarDespacho
             cnn.Close()
         End If
         cnn.Open()
-        Dim Sql As String = "select tbl_Despacho.id_Despacho, tbl_Objeto.id_Objeto, tbl_capacidad.id_Capacidad from tbl_Despacho inner join tbl_Objeto on tbl_Despacho.id_Objeto=tbl_Objeto.id_Objeto inner join tbl_Cubiculo on tbl_Objeto.id_Cubiculo = tbl_Cubiculo.id_Cubiculo inner join tbl_Capacidad on tbl_Capacidad.id_Capacidad = tbl_Cubiculo.capacidad where tbl_Objeto.n_Orden = @aux"
+        Dim Sql As String = "select tbl_Despacho.id_Despacho, tbl_Objeto.id_Objeto, tbl_capacidad.id_Capacidad, tbl_Cubiculo.id_Cubiculo from tbl_Despacho inner join tbl_Objeto on tbl_Despacho.id_Objeto=tbl_Objeto.id_Objeto inner join tbl_Cubiculo on tbl_Objeto.id_Cubiculo = tbl_Cubiculo.id_Cubiculo inner join tbl_Capacidad on tbl_Capacidad.id_Capacidad = tbl_Cubiculo.capacidad where tbl_Objeto.n_Orden = @aux and tbl_Despacho.estado <> '4'"
         Dim command As New SqlCommand(Sql, cnn)
         command.Parameters.AddWithValue("@aux", norden)
 
@@ -117,24 +119,26 @@ Public Class frmRealizarDespacho
             idDespacho = Convert.ToString(reader("id_Despacho"))
             idCapacidad = Convert.ToString(reader("id_Capacidad"))
             idObjeto = Convert.ToString(reader("id_Objeto"))
+            idCubiculo = Convert.ToString(reader("id_Cubiculo"))
+
+            reader.Close()
+
+            Dim cmd1 As New SqlCommand("sp_SalidaDespacho", cnn)
+            cmd1.CommandType = CommandType.StoredProcedure
+            cmd1.Parameters.AddWithValue("@ID_Despacho", idDespacho)
+            cmd1.Parameters.AddWithValue("@estado", "3")
+
+            cmd1.ExecuteNonQuery()
+
+            Form1.cargardataFechaSalida()
         End If
-        reader.Close()
-
-        Dim cmd1 As New SqlCommand("sp_SalidaDespacho", cnn)
-        cmd1.CommandType = CommandType.StoredProcedure
-        cmd1.Parameters.AddWithValue("@ID_Despacho", idDespacho)
-        cmd1.Parameters.AddWithValue("@estado", "3")
-
-        cmd1.ExecuteNonQuery()
-
-        Form1.cargardataFechaSalida()
-
         cnn.Close()
         cargardata()
     End Sub
 
     Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
         Try
+
             If txtQR.Text <> "Escanee el Codigo QR o Ingrese N° Orden" Then
                 If Exists(txtQR.Text) Then
                     Dim pregunta As Integer
@@ -148,11 +152,11 @@ Public Class frmRealizarDespacho
                         Dim cmd2 As New SqlCommand("sp_ModificarObjeto", cnn)
                         cmd2.CommandType = CommandType.StoredProcedure
                         cmd2.Parameters.AddWithValue("@ID_Objeto", idObjeto)
-                        cmd2.Parameters.AddWithValue("@id_Cubiculo", "35")
+                        cmd2.Parameters.AddWithValue("@id_Cubiculo", idCubiculo)
 
                         cmd2.ExecuteNonQuery()
 
-                        Dim cmd3 As New SqlCommand("sp_ModificarCapacidad", cnn)
+                        Dim cmd3 As New SqlCommand("sp_ModificarCapacidadSuma", cnn)
                         cmd3.CommandType = CommandType.StoredProcedure
                         cmd3.Parameters.AddWithValue("@ID_capacidad", idCapacidad)
                         cmd3.Parameters.AddWithValue("@cap_disponible", DataGridView1.Rows(DataGridView1.CurrentRow.Index).Cells(4).Value)
@@ -183,6 +187,8 @@ Public Class frmRealizarDespacho
                         DataGridView1.DataSource = Nothing
                         txtQR.Text = "Escanee el Codigo QR o Ingrese N° Orden"
                         txtQR.SelectAll()
+                        norden = ""
+                        Me.Close()
                     End If
                 Else
                     MsgBox("Orden no se encuentra registrada en la base de datos", MsgBoxStyle.Information, "Atención")
@@ -207,5 +213,32 @@ Public Class frmRealizarDespacho
 
     Private Sub frmRealizarDespacho_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         lblEmpleado.Text = clsLogin.NombreUsuario
+        Label12.Text = Date.Today
+    End Sub
+
+    Private Sub txtQR_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtQR.TextChanged
+        Try
+            If txtQR.Text = "" Then
+                If cnn.State = ConnectionState.Open Then
+                    cnn.Close()
+                End If
+                cnn.Open()
+                If norden <> "" Then
+
+                    Dim cmd1 As New SqlCommand("sp_SalidaDespacho", cnn)
+                    cmd1.CommandType = CommandType.StoredProcedure
+                    cmd1.Parameters.AddWithValue("@ID_Despacho", idDespacho)
+                    cmd1.Parameters.AddWithValue("@estado", "1")
+
+                    cmd1.ExecuteNonQuery()
+                    DataGridView1.DataSource = Nothing
+                    Form1.cargardataFechaSalida()
+                    cnn.Close()
+                End If
+            End If
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 End Class

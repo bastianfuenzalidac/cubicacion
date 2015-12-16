@@ -22,23 +22,27 @@ Partial Class Form1
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.AdministraciónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CubiculosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UsuariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CrearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ModificarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DesbloquearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EstadoCubiculosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DespachosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PorFechaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ProveedorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.NOrdenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.EstadoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ResumenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CompletoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GenralToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DetalleCubiculosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.IngresoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CargaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DespachoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -79,7 +83,7 @@ Partial Class Form1
         '
         'UsuariosToolStripMenuItem
         '
-        Me.UsuariosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CrearToolStripMenuItem, Me.ModificarToolStripMenuItem, Me.DesbloquearToolStripMenuItem})
+        Me.UsuariosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CrearToolStripMenuItem})
         Me.UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem"
         Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.UsuariosToolStripMenuItem.Text = "Usuarios"
@@ -88,23 +92,11 @@ Partial Class Form1
         '
         Me.CrearToolStripMenuItem.Name = "CrearToolStripMenuItem"
         Me.CrearToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.CrearToolStripMenuItem.Text = "Crear"
-        '
-        'ModificarToolStripMenuItem
-        '
-        Me.ModificarToolStripMenuItem.Name = "ModificarToolStripMenuItem"
-        Me.ModificarToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.ModificarToolStripMenuItem.Text = "Modificar"
-        '
-        'DesbloquearToolStripMenuItem
-        '
-        Me.DesbloquearToolStripMenuItem.Name = "DesbloquearToolStripMenuItem"
-        Me.DesbloquearToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.DesbloquearToolStripMenuItem.Text = "Desbloquear"
+        Me.CrearToolStripMenuItem.Text = "Mantención"
         '
         'VerToolStripMenuItem
         '
-        Me.VerToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EstadoCubiculosToolStripMenuItem, Me.DespachosToolStripMenuItem, Me.EstadoToolStripMenuItem})
+        Me.VerToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EstadoCubiculosToolStripMenuItem, Me.DespachosToolStripMenuItem, Me.EstadoToolStripMenuItem, Me.DetalleCubiculosToolStripMenuItem})
         Me.VerToolStripMenuItem.Name = "VerToolStripMenuItem"
         Me.VerToolStripMenuItem.Size = New System.Drawing.Size(35, 20)
         Me.VerToolStripMenuItem.Text = "Ver"
@@ -112,39 +104,33 @@ Partial Class Form1
         'EstadoCubiculosToolStripMenuItem
         '
         Me.EstadoCubiculosToolStripMenuItem.Name = "EstadoCubiculosToolStripMenuItem"
-        Me.EstadoCubiculosToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
+        Me.EstadoCubiculosToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
         Me.EstadoCubiculosToolStripMenuItem.Text = "Estado Cubiculos"
         '
         'DespachosToolStripMenuItem
         '
-        Me.DespachosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PorFechaToolStripMenuItem, Me.ProveedorToolStripMenuItem, Me.NOrdenToolStripMenuItem})
+        Me.DespachosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PorFechaToolStripMenuItem, Me.ToolStripMenuItem1})
         Me.DespachosToolStripMenuItem.Name = "DespachosToolStripMenuItem"
-        Me.DespachosToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
+        Me.DespachosToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
         Me.DespachosToolStripMenuItem.Text = "Despachos"
         '
         'PorFechaToolStripMenuItem
         '
         Me.PorFechaToolStripMenuItem.Name = "PorFechaToolStripMenuItem"
-        Me.PorFechaToolStripMenuItem.Size = New System.Drawing.Size(128, 22)
-        Me.PorFechaToolStripMenuItem.Text = "Por Fecha"
+        Me.PorFechaToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.PorFechaToolStripMenuItem.Text = "Pendientes"
         '
-        'ProveedorToolStripMenuItem
+        'ToolStripMenuItem1
         '
-        Me.ProveedorToolStripMenuItem.Name = "ProveedorToolStripMenuItem"
-        Me.ProveedorToolStripMenuItem.Size = New System.Drawing.Size(128, 22)
-        Me.ProveedorToolStripMenuItem.Text = "Proveedor"
-        '
-        'NOrdenToolStripMenuItem
-        '
-        Me.NOrdenToolStripMenuItem.Name = "NOrdenToolStripMenuItem"
-        Me.NOrdenToolStripMenuItem.Size = New System.Drawing.Size(128, 22)
-        Me.NOrdenToolStripMenuItem.Text = "N° Orden"
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.ToolStripMenuItem1.Text = "Creados"
         '
         'EstadoToolStripMenuItem
         '
         Me.EstadoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ResumenToolStripMenuItem, Me.CompletoToolStripMenuItem, Me.GenralToolStripMenuItem})
         Me.EstadoToolStripMenuItem.Name = "EstadoToolStripMenuItem"
-        Me.EstadoToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
+        Me.EstadoToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
         Me.EstadoToolStripMenuItem.Text = "Estado"
         '
         'ResumenToolStripMenuItem
@@ -164,6 +150,12 @@ Partial Class Form1
         Me.GenralToolStripMenuItem.Name = "GenralToolStripMenuItem"
         Me.GenralToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
         Me.GenralToolStripMenuItem.Text = "General"
+        '
+        'DetalleCubiculosToolStripMenuItem
+        '
+        Me.DetalleCubiculosToolStripMenuItem.Name = "DetalleCubiculosToolStripMenuItem"
+        Me.DetalleCubiculosToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
+        Me.DetalleCubiculosToolStripMenuItem.Text = "Detalle Cubiculos"
         '
         'IngresoToolStripMenuItem
         '
@@ -217,11 +209,35 @@ Partial Class Form1
         Me.DataGridView1.AllowUserToResizeRows = False
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.Control
         Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle8
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Right
         Me.DataGridView1.Location = New System.Drawing.Point(5, 15)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle9
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(261, 79)
@@ -255,11 +271,35 @@ Partial Class Form1
         Me.DataGridView2.AllowUserToResizeRows = False
         Me.DataGridView2.BackgroundColor = System.Drawing.SystemColors.Control
         Me.DataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView2.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle10
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView2.DefaultCellStyle = DataGridViewCellStyle11
         Me.DataGridView2.Dock = System.Windows.Forms.DockStyle.Right
         Me.DataGridView2.Location = New System.Drawing.Point(5, 131)
         Me.DataGridView2.Name = "DataGridView2"
         Me.DataGridView2.ReadOnly = True
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView2.RowHeadersDefaultCellStyle = DataGridViewCellStyle12
         Me.DataGridView2.RowHeadersVisible = False
         Me.DataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView2.Size = New System.Drawing.Size(261, 300)
@@ -311,8 +351,6 @@ Partial Class Form1
     Friend WithEvents CargaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents DespachosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PorFechaToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ProveedorToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents NOrdenToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents EstadoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ResumenToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CompletoToolStripMenuItem As ToolStripMenuItem
@@ -326,6 +364,6 @@ Partial Class Form1
     Friend WithEvents DataGridView2 As System.Windows.Forms.DataGridView
     Friend WithEvents RealizarDespachoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CrearToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ModificarToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents DesbloquearToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents DetalleCubiculosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

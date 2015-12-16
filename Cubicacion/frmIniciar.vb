@@ -62,6 +62,7 @@ Public Class frmIniciar
 
                 clsLogin.IdUsuario = (reader("id_Empleado"))
                 clsLogin.NombreUsuario = Convert.ToString(reader("primer_Nombre")).Trim & " " & Convert.ToString(reader("apellido_Paterno")).Trim
+                clsLogin.Rol = (reader("id_Rol"))
                 reader.Close()
                 Dim cmd4 As New SqlCommand("sp_CrearBitacora", cnn)
 

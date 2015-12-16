@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DsDetalleCubiculos" targetNamespace="http://tempuri.org/DsArticulos.xsd" xmlns:mstns="http://tempuri.org/DsArticulos.xsd" xmlns="http://tempuri.org/DsArticulos.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DsDetalleCubiculos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DsDetalleCubiculos" msprop:Generator_UserDSName="DsDetalleCubiculos">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DtDetalleCubiculos" msprop:Generator_TableClassName="DtDetalleCubiculosDataTable" msprop:Generator_TableVarName="tableDtDetalleCubiculos" msprop:Generator_TablePropName="DtDetalleCubiculos" msprop:Generator_RowDeletingName="DtDetalleCubiculosRowDeleting" msprop:Generator_RowChangingName="DtDetalleCubiculosRowChanging" msprop:Generator_RowEvHandlerName="DtDetalleCubiculosRowChangeEventHandler" msprop:Generator_RowDeletedName="DtDetalleCubiculosRowDeleted" msprop:Generator_UserTableName="DtDetalleCubiculos" msprop:Generator_RowChangedName="DtDetalleCubiculosRowChanged" msprop:Generator_RowEvArgName="DtDetalleCubiculosRowChangeEvent" msprop:Generator_RowClassName="DtDetalleCubiculosRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="numero_columna" msprop:Generator_ColumnVarNameInTable="columnnumero_columna" msprop:Generator_ColumnPropNameInRow="numero_columna" msprop:Generator_ColumnPropNameInTable="numero_columnaColumn" msprop:Generator_UserColumnName="numero_columna" type="xs:string" minOccurs="0" />
+              <xs:element name="numero_fila" msprop:Generator_ColumnVarNameInTable="columnnumero_fila" msprop:Generator_ColumnPropNameInRow="numero_fila" msprop:Generator_ColumnPropNameInTable="numero_filaColumn" msprop:Generator_UserColumnName="numero_fila" type="xs:string" minOccurs="0" />
+              <xs:element name="ancho" msprop:Generator_ColumnVarNameInTable="columnancho" msprop:Generator_ColumnPropNameInRow="ancho" msprop:Generator_ColumnPropNameInTable="anchoColumn" msprop:Generator_UserColumnName="ancho" type="xs:string" minOccurs="0" />
+              <xs:element name="alto" msprop:Generator_ColumnVarNameInTable="columnalto" msprop:Generator_ColumnPropNameInRow="alto" msprop:Generator_ColumnPropNameInTable="altoColumn" msprop:Generator_UserColumnName="alto" type="xs:string" minOccurs="0" />
+              <xs:element name="largo" msprop:Generator_ColumnVarNameInTable="columnlargo" msprop:Generator_ColumnPropNameInRow="largo" msprop:Generator_ColumnPropNameInTable="largoColumn" msprop:Generator_UserColumnName="largo" type="xs:string" minOccurs="0" />
+              <xs:element name="peso" msprop:Generator_ColumnVarNameInTable="columnpeso" msprop:Generator_ColumnPropNameInRow="peso" msprop:Generator_ColumnPropNameInTable="pesoColumn" msprop:Generator_UserColumnName="peso" type="xs:string" minOccurs="0" />
+              <xs:element name="temperatura" msprop:Generator_ColumnVarNameInTable="columntemperatura" msprop:Generator_ColumnPropNameInRow="temperatura" msprop:Generator_ColumnPropNameInTable="temperaturaColumn" msprop:Generator_UserColumnName="temperatura" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

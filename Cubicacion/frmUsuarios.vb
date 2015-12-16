@@ -47,7 +47,7 @@ Public Class frmUsuarios
     End Sub
 
     Private Function Exists(ByVal Id As String) As Boolean
-        Dim sql As String = "SELECT COUNT(*)  FROM Usuarios WHERE Usuario = @Usuario"
+        Dim sql As String = "SELECT COUNT(*)  FROM tbl_Empleado WHERE Usuario = @Usuario"
 
 
         Dim command As New SqlCommand(sql, cnn)
@@ -81,18 +81,23 @@ Public Class frmUsuarios
                             cnn.Close()
                         End If
                         cnn.Open()
-                        Dim cmd As New SqlCommand("sp_AltaUsuarios", cnn)
+                        Dim cmd As New SqlCommand("sp_CrearEmpleado", cnn)
 
                         cmd.CommandType = CommandType.StoredProcedure
-
-                        cmd.Parameters.AddWithValue("@Nombre", TextBox1.Text)
-                        cmd.Parameters.AddWithValue("@Apellido", TextBox2.Text)
-                        cmd.Parameters.AddWithValue("@Tipo", lblTipoUsuario.Text)
-                        cmd.Parameters.AddWithValue("@Fecha", fecha)
-                        cmd.Parameters.AddWithValue("@Hora", hora)
-                        cmd.Parameters.AddWithValue("@Usuario", TextBox3.Text)
-                        cmd.Parameters.AddWithValue("@Contrasena", TextBox5.Text)
-
+                        cmd.Parameters.AddWithValue("@rut", txtRut.Text)
+                        cmd.Parameters.AddWithValue("@digito", txtDigito.Text)
+                        cmd.Parameters.AddWithValue("@primer_nombre", TextBox1.Text)
+                        cmd.Parameters.AddWithValue("@segundo_nombre", "")
+                        cmd.Parameters.AddWithValue("@apellido_paterno", TextBox2.Text)
+                        cmd.Parameters.AddWithValue("@apellido_materno", "")
+                        cmd.Parameters.AddWithValue("@cargo", txtCargo.Text)
+                        cmd.Parameters.AddWithValue("@area", "1")
+                        cmd.Parameters.AddWithValue("@sub_Area", "1")
+                        cmd.Parameters.AddWithValue("@estado_empleado", "1")
+                        cmd.Parameters.AddWithValue("@id_rol", lblTipoUsuario.Text)
+                        cmd.Parameters.AddWithValue("@usuario", TextBox3.Text)
+                        cmd.Parameters.AddWithValue("@contraseña", TextBox4.Text)
+                        cmd.Parameters.AddWithValue("@count_estado", "0")
 
                         cmd.ExecuteNonQuery()
 
@@ -106,8 +111,11 @@ Public Class frmUsuarios
                         TextBox4.Text = ""
                         TextBox5.Text = ""
                         TextBox6.Text = ""
+                        txtCargo.Text = ""
+                        txtDigito.Text = ""
+                        txtRut.Text = ""
                         tipo = ""
-
+                        CheckBox1.Checked = False
                     Else
                         MsgBox("Ingrese los Datos Solicitados", MsgBoxStyle.Information, "Faltan Datos")
                         cnn.Close()
@@ -224,15 +232,21 @@ Public Class frmUsuarios
             Label10.Visible = True
             Label11.Visible = True
 
-            TextBox6.Text = Convert.ToString(reader("ID_Usuario"))
-            TextBox1.Text = Convert.ToString(reader("Nombre"))
-            TextBox2.Text = Convert.ToString(reader("Apellido"))
-            lblTipoUsuario.Text = (reader("Tipo"))
-
-            Label9.Text = Convert.ToString(reader("Fecha"))
-            Label11.Text = Convert.ToString(reader("Hora"))
+            TextBox6.Text = Convert.ToString(reader("ID_Empleado"))
+            TextBox1.Text = Convert.ToString(reader("primer_nombre"))
+            TextBox2.Text = Convert.ToString(reader("apellido_paterno"))
+            lblTipoUsuario.Text = (reader("id_rol"))
             TextBox4.Text = Convert.ToString(reader("Contraseña"))
             TextBox5.Text = Convert.ToString(reader("Contraseña"))
+            txtRut.Text = Convert.ToString(reader("rut"))
+            txtDigito.Text = Convert.ToString(reader("digito"))
+            txtCargo.Text = Convert.ToString(reader("cargo"))
+            Dim estado = Convert.ToString(reader("estado_empleado"))
+            If estado = "2" Then
+                CheckBox1.Checked = True
+            Else
+                CheckBox1.Checked = False
+            End If
         Else
             Label8.Visible = False
             Label9.Visible = False
@@ -241,7 +255,7 @@ Public Class frmUsuarios
         End If
         reader.Close()
         If lblTipoUsuario.Text <> "" Then
-            Dim Sql1 As String = "Select * From TipoUsuario where ID_TipoUsuario = @usu"
+            Dim Sql1 As String = "Select * From tbl_rol where id_rol = @usu"
 
 
             Dim command1 As New SqlCommand(Sql1, cnn)
@@ -252,7 +266,7 @@ Public Class frmUsuarios
 
             If reader1.Read() Then
                 '  MsgBox(reader1("Tipo"))
-                cbTipo.SelectedItem = (reader1("Tipo"))
+                cbTipo.SelectedItem = (reader1("rol"))
 
             Else
 
@@ -292,7 +306,11 @@ Public Class frmUsuarios
         TextBox4.Text = ""
         TextBox5.Text = ""
         TextBox6.Text = ""
+        txtCargo.Text = ""
+        txtDigito.Text = ""
+        txtRut.Text = ""
         tipo = ""
+        CheckBox1.Checked = False
     End Sub
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
@@ -302,14 +320,27 @@ Public Class frmUsuarios
             Dim cmd As New SqlCommand("sp_ModificarUsuarios", cnn)
             cmd.CommandType = CommandType.StoredProcedure
 
-            cmd.Parameters.AddWithValue("@ID_Usuario", TextBox6.Text)
-            cmd.Parameters.AddWithValue("@Nombre", TextBox1.Text)
-            cmd.Parameters.AddWithValue("@Apellido", TextBox2.Text)
-            cmd.Parameters.AddWithValue("@Tipo", lblTipoUsuario.Text)
-            cmd.Parameters.AddWithValue("@Fecha", fecha)
-            cmd.Parameters.AddWithValue("@Hora", hora)
-            cmd.Parameters.AddWithValue("@Usuario", TextBox3.Text)
-            cmd.Parameters.AddWithValue("@Contraseña", TextBox5.Text)
+            cmd.Parameters.AddWithValue("@ID_empleado", TextBox6.Text)
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Parameters.AddWithValue("@rut", txtRut.Text)
+            cmd.Parameters.AddWithValue("@digito", txtDigito.Text)
+            cmd.Parameters.AddWithValue("@primer_nombre", TextBox1.Text)
+            cmd.Parameters.AddWithValue("@segundo_nombre", "")
+            cmd.Parameters.AddWithValue("@apellido_paterno", TextBox2.Text)
+            cmd.Parameters.AddWithValue("@apellido_materno", "")
+            cmd.Parameters.AddWithValue("@cargo", txtCargo.Text)
+            cmd.Parameters.AddWithValue("@area", "1")
+            cmd.Parameters.AddWithValue("@sub_Area", "1")
+            If CheckBox1.Checked = True Then
+                cmd.Parameters.AddWithValue("@estado_empleado", "2")
+            Else
+                cmd.Parameters.AddWithValue("@estado_empleado", "1")
+            End If
+
+            cmd.Parameters.AddWithValue("@id_rol", lblTipoUsuario.Text)
+            cmd.Parameters.AddWithValue("@usuario", TextBox3.Text)
+            cmd.Parameters.AddWithValue("@contraseña", TextBox4.Text)
+            cmd.Parameters.AddWithValue("@count_estado", "0")
 
             cmd.ExecuteNonQuery()
 
@@ -322,6 +353,9 @@ Public Class frmUsuarios
             TextBox4.Text = ""
             TextBox5.Text = ""
             TextBox6.Text = ""
+            txtDigito.Text = ""
+            txtRut.Text = ""
+            txtCargo.Text = ""
 
 
         Catch ex As Exception
@@ -337,7 +371,7 @@ Public Class frmUsuarios
         If cnn.State = ConnectionState.Open Then
             cnn.Close()
         End If
-        Dim Sql As String = "Select * From TipoUsuario where Tipo = @usu"
+        Dim Sql As String = "Select * From tbl_Rol where Rol = @usu"
 
 
         Dim command As New SqlCommand(Sql, cnn)
@@ -348,7 +382,7 @@ Public Class frmUsuarios
         Dim reader As SqlDataReader = command.ExecuteReader()
 
         If reader.Read() Then
-            lblTipoUsuario.Text = (reader("ID_TipoUsuario"))
+            lblTipoUsuario.Text = (reader("ID_Rol"))
            
         Else
             
@@ -427,4 +461,5 @@ Public Class frmUsuarios
             MsgBox(ex.Message)
         End Try
     End Sub
+
 End Class

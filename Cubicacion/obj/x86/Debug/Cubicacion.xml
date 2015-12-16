@@ -6,40 +6,7 @@ Cubicacion
 </name>
 </assembly>
 <members>
-<member name="P:Cubicacion.My.Resources.Resources.ResourceManager">
-	<summary>
-  Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
-</summary>
-</member><member name="P:Cubicacion.My.Resources.Resources.Culture">
-	<summary>
-  Reemplaza la propiedad CurrentUICulture del subproceso actual para todas las
-  búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
-</summary>
-</member><member name="P:Cubicacion.My.Resources.Resources.edelpa1">
-	<summary>
-  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-</summary>
-</member><member name="T:Cubicacion.My.Resources.Resources">
-	<summary>
-  Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
-</summary>
-</member><member name="T:Cubicacion.DsArticulos.DtArticulosDataTable">
-	<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member><member name="T:Cubicacion.DsArticulos.DtArticulosRow">
-	<summary>
-Represents strongly named DataRow class.
-</summary>
-</member><member name="T:Cubicacion.DsArticulos.DtArticulosRowChangeEvent">
-	<summary>
-Row event argument class
-</summary>
-</member><member name="T:Cubicacion.DsArticulos">
-	<summary>
-Represents a strongly typed in-memory cache of data.
-</summary>
-</member><member name="T:Cubicacion.DsArticulos3.DtArticulos3DataTable">
+<member name="T:Cubicacion.DsArticulos3.DtArticulos3DataTable">
 	<summary>
 Represents the strongly named DataTable class.
 </summary>
@@ -52,6 +19,22 @@ Represents strongly named DataRow class.
 Row event argument class
 </summary>
 </member><member name="T:Cubicacion.DsArticulos3">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:Cubicacion.DsDespachosCreados.DtDespachosCreadosDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Cubicacion.DsDespachosCreados.DtDespachosCreadosRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Cubicacion.DsDespachosCreados.DtDespachosCreadosRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Cubicacion.DsDespachosCreados">
 	<summary>
 Represents a strongly typed in-memory cache of data.
 </summary>
@@ -70,6 +53,55 @@ Row event argument class
 </member><member name="T:Cubicacion.DsArticulos2">
 	<summary>
 Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:Cubicacion.DsDetalleCubiculos.DtDetalleCubiculosDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Cubicacion.DsDetalleCubiculos.DtDetalleCubiculosRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Cubicacion.DsDetalleCubiculos.DtDetalleCubiculosRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Cubicacion.DsDetalleCubiculos">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:Cubicacion.DsArticulos.DtArticulosDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Cubicacion.DsArticulos.DtArticulosRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Cubicacion.DsArticulos.DtArticulosRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Cubicacion.DsArticulos">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="P:Cubicacion.My.Resources.Resources.ResourceManager">
+	<summary>
+  Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
+</summary>
+</member><member name="P:Cubicacion.My.Resources.Resources.Culture">
+	<summary>
+  Reemplaza la propiedad CurrentUICulture del subproceso actual para todas las
+  búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
+</summary>
+</member><member name="P:Cubicacion.My.Resources.Resources.edelpa1">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="T:Cubicacion.My.Resources.Resources">
+	<summary>
+  Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
 </summary>
 </member>
 </members>

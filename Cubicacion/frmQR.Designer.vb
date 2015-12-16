@@ -22,6 +22,7 @@ Partial Class frmQR
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmQR))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtOrden = New System.Windows.Forms.TextBox()
         Me.txtPeso = New System.Windows.Forms.TextBox()
@@ -62,9 +63,32 @@ Partial Class frmQR
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
+        Me.pbEditar1 = New System.Windows.Forms.PictureBox()
+        Me.pbEditar2 = New System.Windows.Forms.PictureBox()
+        Me.pbOk1 = New System.Windows.Forms.PictureBox()
+        Me.pbOk2 = New System.Windows.Forms.PictureBox()
+        Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.LineShape1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.lblColumna = New System.Windows.Forms.Label()
+        Me.lblFila = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pbEditar1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pbEditar2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pbOk1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pbOk2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel3.SuspendLayout()
+        Me.Panel4.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -231,7 +255,7 @@ Partial Class frmQR
         'Button1
         '
         Me.Button1.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Button1.Location = New System.Drawing.Point(223, 372)
+        Me.Button1.Location = New System.Drawing.Point(358, 372)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(87, 27)
         Me.Button1.TabIndex = 16
@@ -240,6 +264,7 @@ Partial Class frmQR
         '
         'Button2
         '
+        Me.Button2.Enabled = False
         Me.Button2.Location = New System.Drawing.Point(451, 372)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(87, 27)
@@ -258,6 +283,7 @@ Partial Class frmQR
         Me.Panel1.Controls.Add(Me.txtCant)
         Me.Panel1.Controls.Add(Me.Label4)
         Me.Panel1.Controls.Add(Me.txtProveedor)
+        Me.Panel1.Enabled = False
         Me.Panel1.Location = New System.Drawing.Point(14, 108)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(523, 90)
@@ -296,6 +322,7 @@ Partial Class frmQR
         Me.Panel2.Controls.Add(Me.txtLargo)
         Me.Panel2.Controls.Add(Me.Label7)
         Me.Panel2.Controls.Add(Me.txtAncho)
+        Me.Panel2.Enabled = False
         Me.Panel2.Location = New System.Drawing.Point(14, 215)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(523, 85)
@@ -336,7 +363,7 @@ Partial Class frmQR
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.ForeColor = System.Drawing.Color.Navy
-        Me.Label9.Location = New System.Drawing.Point(5, 10)
+        Me.Label9.Location = New System.Drawing.Point(3, 22)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(83, 15)
         Me.Label9.TabIndex = 8
@@ -358,18 +385,17 @@ Partial Class frmQR
         Me.lblNombre.AutoSize = True
         Me.lblNombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNombre.ForeColor = System.Drawing.Color.Navy
-        Me.lblNombre.Location = New System.Drawing.Point(89, 10)
+        Me.lblNombre.Location = New System.Drawing.Point(84, 22)
         Me.lblNombre.Name = "lblNombre"
-        Me.lblNombre.Size = New System.Drawing.Size(64, 15)
+        Me.lblNombre.Size = New System.Drawing.Size(0, 15)
         Me.lblNombre.TabIndex = 20
-        Me.lblNombre.Text = "Empleado"
         '
         'lblFecha
         '
         Me.lblFecha.AutoSize = True
         Me.lblFecha.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblFecha.ForeColor = System.Drawing.Color.Navy
-        Me.lblFecha.Location = New System.Drawing.Point(468, 10)
+        Me.lblFecha.Location = New System.Drawing.Point(462, 10)
         Me.lblFecha.Name = "lblFecha"
         Me.lblFecha.Size = New System.Drawing.Size(69, 15)
         Me.lblFecha.TabIndex = 21
@@ -378,13 +404,14 @@ Partial Class frmQR
         'lblEstado
         '
         Me.lblEstado.AutoSize = True
-        Me.lblEstado.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblEstado.ForeColor = System.Drawing.Color.Red
-        Me.lblEstado.Location = New System.Drawing.Point(601, 10)
+        Me.lblEstado.Font = New System.Drawing.Font("Arial", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblEstado.ForeColor = System.Drawing.Color.Navy
+        Me.lblEstado.Location = New System.Drawing.Point(577, 125)
         Me.lblEstado.Name = "lblEstado"
-        Me.lblEstado.Size = New System.Drawing.Size(166, 25)
+        Me.lblEstado.Size = New System.Drawing.Size(151, 21)
         Me.lblEstado.TabIndex = 23
         Me.lblEstado.Text = "Ubicación Optima"
+        Me.lblEstado.Visible = False
         '
         'Button3
         '
@@ -416,10 +443,11 @@ Partial Class frmQR
         'lblUsuario
         '
         Me.lblUsuario.AutoSize = True
-        Me.lblUsuario.Location = New System.Drawing.Point(76, 463)
+        Me.lblUsuario.Location = New System.Drawing.Point(71, 7)
         Me.lblUsuario.Name = "lblUsuario"
-        Me.lblUsuario.Size = New System.Drawing.Size(0, 15)
+        Me.lblUsuario.Size = New System.Drawing.Size(35, 15)
         Me.lblUsuario.TabIndex = 27
+        Me.lblUsuario.Text = "1111"
         '
         'lblCol
         '
@@ -450,9 +478,9 @@ Partial Class frmQR
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(318, 372)
+        Me.Button4.Location = New System.Drawing.Point(159, 422)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(126, 27)
+        Me.Button4.Size = New System.Drawing.Size(154, 27)
         Me.Button4.TabIndex = 31
         Me.Button4.Text = "Ver Estado"
         Me.Button4.UseVisualStyleBackColor = True
@@ -479,11 +507,197 @@ Partial Class frmQR
         Me.Label13.TabIndex = 33
         Me.Label13.Text = "Dimensiones"
         '
+        'pbEditar1
+        '
+        Me.pbEditar1.BackColor = System.Drawing.SystemColors.Control
+        Me.pbEditar1.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.pbEditar1.Image = CType(resources.GetObject("pbEditar1.Image"), System.Drawing.Image)
+        Me.pbEditar1.Location = New System.Drawing.Point(538, 108)
+        Me.pbEditar1.Name = "pbEditar1"
+        Me.pbEditar1.Size = New System.Drawing.Size(20, 20)
+        Me.pbEditar1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.pbEditar1.TabIndex = 34
+        Me.pbEditar1.TabStop = False
+        '
+        'pbEditar2
+        '
+        Me.pbEditar2.BackColor = System.Drawing.SystemColors.Control
+        Me.pbEditar2.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.pbEditar2.Image = CType(resources.GetObject("pbEditar2.Image"), System.Drawing.Image)
+        Me.pbEditar2.Location = New System.Drawing.Point(538, 215)
+        Me.pbEditar2.Name = "pbEditar2"
+        Me.pbEditar2.Size = New System.Drawing.Size(20, 20)
+        Me.pbEditar2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.pbEditar2.TabIndex = 35
+        Me.pbEditar2.TabStop = False
+        '
+        'pbOk1
+        '
+        Me.pbOk1.BackColor = System.Drawing.SystemColors.Control
+        Me.pbOk1.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.pbOk1.Image = CType(resources.GetObject("pbOk1.Image"), System.Drawing.Image)
+        Me.pbOk1.Location = New System.Drawing.Point(538, 108)
+        Me.pbOk1.Name = "pbOk1"
+        Me.pbOk1.Size = New System.Drawing.Size(20, 20)
+        Me.pbOk1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pbOk1.TabIndex = 36
+        Me.pbOk1.TabStop = False
+        Me.pbOk1.Visible = False
+        '
+        'pbOk2
+        '
+        Me.pbOk2.BackColor = System.Drawing.SystemColors.Control
+        Me.pbOk2.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.pbOk2.Image = CType(resources.GetObject("pbOk2.Image"), System.Drawing.Image)
+        Me.pbOk2.Location = New System.Drawing.Point(538, 215)
+        Me.pbOk2.Name = "pbOk2"
+        Me.pbOk2.Size = New System.Drawing.Size(20, 20)
+        Me.pbOk2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pbOk2.TabIndex = 37
+        Me.pbOk2.TabStop = False
+        Me.pbOk2.Visible = False
+        '
+        'ShapeContainer1
+        '
+        Me.ShapeContainer1.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer1.Name = "ShapeContainer1"
+        Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.LineShape1})
+        Me.ShapeContainer1.Size = New System.Drawing.Size(866, 407)
+        Me.ShapeContainer1.TabIndex = 38
+        Me.ShapeContainer1.TabStop = False
+        '
+        'LineShape1
+        '
+        Me.LineShape1.Name = "LineShape1"
+        Me.LineShape1.X1 = 564
+        Me.LineShape1.X2 = 564
+        Me.LineShape1.Y1 = 7
+        Me.LineShape1.Y2 = 396
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.ForeColor = System.Drawing.Color.Navy
+        Me.Label17.Location = New System.Drawing.Point(3, 7)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(67, 15)
+        Me.Label17.TabIndex = 40
+        Me.Label17.Text = "Empleado:"
+        '
+        'lblColumna
+        '
+        Me.lblColumna.AutoSize = True
+        Me.lblColumna.Font = New System.Drawing.Font("Arial", 35.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblColumna.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.lblColumna.Location = New System.Drawing.Point(12, 54)
+        Me.lblColumna.Name = "lblColumna"
+        Me.lblColumna.Size = New System.Drawing.Size(93, 53)
+        Me.lblColumna.TabIndex = 41
+        Me.lblColumna.Text = "Col"
+        '
+        'lblFila
+        '
+        Me.lblFila.AutoSize = True
+        Me.lblFila.Font = New System.Drawing.Font("Arial", 35.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFila.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.lblFila.Location = New System.Drawing.Point(174, 54)
+        Me.lblFila.Name = "lblFila"
+        Me.lblFila.Size = New System.Drawing.Size(72, 53)
+        Me.lblFila.TabIndex = 42
+        Me.lblFila.Text = "Fil"
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Arial", 35.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Label16.Location = New System.Drawing.Point(174, 0)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(98, 53)
+        Me.Label16.TabIndex = 44
+        Me.Label16.Text = "Fila"
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Font = New System.Drawing.Font("Arial", 35.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label18.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Label18.Location = New System.Drawing.Point(12, 0)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(93, 53)
+        Me.Label18.TabIndex = 43
+        Me.Label18.Text = "Col"
+        '
+        'Panel3
+        '
+        Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel3.Controls.Add(Me.Label18)
+        Me.Panel3.Controls.Add(Me.Label16)
+        Me.Panel3.Controls.Add(Me.lblColumna)
+        Me.Panel3.Controls.Add(Me.lblFila)
+        Me.Panel3.Location = New System.Drawing.Point(578, 10)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(276, 109)
+        Me.Panel3.TabIndex = 45
+        Me.Panel3.Visible = False
+        '
+        'Panel4
+        '
+        Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel4.Controls.Add(Me.Label20)
+        Me.Panel4.Controls.Add(Me.Label19)
+        Me.Panel4.Location = New System.Drawing.Point(578, 9)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(236, 113)
+        Me.Panel4.TabIndex = 46
+        Me.Panel4.Visible = False
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Font = New System.Drawing.Font("Arial", 25.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label20.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Label20.Location = New System.Drawing.Point(3, 65)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(214, 39)
+        Me.Label20.TabIndex = 45
+        Me.Label20.Text = "Objeto a Piso"
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Font = New System.Drawing.Font("Arial", 20.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label19.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Label19.Location = New System.Drawing.Point(3, 1)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(237, 64)
+        Me.Label19.TabIndex = 45
+        Me.Label19.Text = "Ubicación Optima " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "no Disponible"
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(624, 65)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(195, 248)
+        Me.PictureBox1.TabIndex = 47
+        Me.PictureBox1.TabStop = False
+        '
         'frmQR
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(849, 406)
+        Me.ClientSize = New System.Drawing.Size(866, 407)
+        Me.Controls.Add(Me.Panel3)
+        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.Panel4)
+        Me.Controls.Add(Me.Label17)
+        Me.Controls.Add(Me.pbOk2)
+        Me.Controls.Add(Me.pbOk1)
+        Me.Controls.Add(Me.pbEditar2)
+        Me.Controls.Add(Me.pbEditar1)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.Button4)
@@ -506,6 +720,7 @@ Partial Class frmQR
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.txtObservacion)
         Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.ShapeContainer1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ForeColor = System.Drawing.Color.Navy
         Me.Name = "frmQR"
@@ -516,6 +731,15 @@ Partial Class frmQR
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pbEditar1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pbEditar2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pbOk1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pbOk2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel3.ResumeLayout(False)
+        Me.Panel3.PerformLayout()
+        Me.Panel4.ResumeLayout(False)
+        Me.Panel4.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -560,4 +784,20 @@ Partial Class frmQR
     Friend WithEvents txtFechaDespacho As System.Windows.Forms.TextBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents Label13 As System.Windows.Forms.Label
+    Friend WithEvents pbEditar1 As System.Windows.Forms.PictureBox
+    Friend WithEvents pbEditar2 As System.Windows.Forms.PictureBox
+    Friend WithEvents pbOk1 As System.Windows.Forms.PictureBox
+    Friend WithEvents pbOk2 As System.Windows.Forms.PictureBox
+    Friend WithEvents ShapeContainer1 As Microsoft.VisualBasic.PowerPacks.ShapeContainer
+    Friend WithEvents LineShape1 As Microsoft.VisualBasic.PowerPacks.LineShape
+    Friend WithEvents Label17 As System.Windows.Forms.Label
+    Friend WithEvents lblColumna As System.Windows.Forms.Label
+    Friend WithEvents lblFila As System.Windows.Forms.Label
+    Friend WithEvents Label16 As System.Windows.Forms.Label
+    Friend WithEvents Label18 As System.Windows.Forms.Label
+    Friend WithEvents Panel3 As System.Windows.Forms.Panel
+    Friend WithEvents Panel4 As System.Windows.Forms.Panel
+    Friend WithEvents Label20 As System.Windows.Forms.Label
+    Friend WithEvents Label19 As System.Windows.Forms.Label
+    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
 End Class
